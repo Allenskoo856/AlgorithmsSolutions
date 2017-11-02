@@ -1,9 +1,9 @@
-/**
+/*
  * Copyright (C), 2015-2017
  * FileName: Student
  * Author:   Administrator
  * Date:     2017/11/2 0002 19:59
- * Description: this is test for other Sort Class
+ * Description: this is  a test class for other Sort Class
  */
 
 package me.zonglun.Sort;
@@ -16,7 +16,7 @@ package me.zonglun.Sort;
  * @deprecated  2017/11/2 0002
  * @since 1.0.0
  */
-public class Student implements Comparable<Student>{
+class Student implements Comparable<Student>{
     private String name;
     private int score;
 

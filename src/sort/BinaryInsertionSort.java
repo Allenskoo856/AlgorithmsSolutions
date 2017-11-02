@@ -39,7 +39,7 @@ public class BinaryInsertionSort {
 	              upperBound= curIndex - 1;  
 	          }else{  
 	              lowerBound= curIndex + 1;  
-	          }  
+	          }
 	       }  
 	       return lowerBound;  
 	   }  
