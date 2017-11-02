@@ -1,5 +1,4 @@
-.settings
-build/
+.settings/
+bin/
 *.class
 .project
-.settings/
