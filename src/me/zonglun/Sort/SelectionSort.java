@@ -36,9 +36,9 @@ public class SelectionSort {
         // 测试Integer
         Integer[] a = {10,9,8,7,6,5,4,3,2,1};
         SelectionSort.sort(a);
-       for (int i : a) {
-           System.out.print(i + " ");
-       }
+        for (int i : a) {
+            System.out.print(i + " ");
+        }
         System.out.println();
 
         // 测试Double
