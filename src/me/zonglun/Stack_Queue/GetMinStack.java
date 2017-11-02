@@ -5,14 +5,14 @@ import java.util.Stack;
 /**
  * @author xcalen
  * @subject
- *     1. Éè¼ÆÒ»¸öÌØÊâµÄÕ»£¬ÔÚÊµÏÖÕ»µÄ»ù±¾¹¦ÄÜÉÏ£¬ÔÙÊµÏÖ·µ»ØÕ»µÄ×îĞ¡ÖµµÄ¹¦ÄÜ
- * 	   2. pop, push, getMIn²Ù×÷Ê±¼ä¸´ÔÓ¶ÈÎªO£¨1£©	
- * @Strategies 
- * 		Éè¼ÆÉÏÊ¹ÓÃÁ½¸öÕ»£¬Ò»¸öÓÃÀ´±£´æµ±Ç°Õ»ÖĞµÄÔªËØ--StackData£»ÁíÒ»¸öÕ»ÓÃÓÚ±£´æÃ¿Ò»²½Ö®ÖĞµÄ×îĞ¡Öµ--¼ÇÎªStackMin
+ *     1. è®¾è®¡ä¸€ä¸ªç‰¹æ®Šçš„æ ˆï¼Œåœ¨å®ç°æ ˆçš„åŸºæœ¬åŠŸèƒ½ä¸Šï¼Œå†å®ç°è¿”å›æ ˆçš„æœ€å°å€¼çš„åŠŸèƒ½
+ * 	   2. pop, push, getMInæ“ä½œæ—¶é—´å¤æ‚åº¦ä¸ºOï¼ˆ1ï¼‰
+ * @Strategies
+ * 		è®¾è®¡ä¸Šä½¿ç”¨ä¸¤ä¸ªæ ˆï¼Œä¸€ä¸ªç”¨æ¥ä¿å­˜å½“å‰æ ˆä¸­çš„å…ƒç´ --StackDataï¼›å¦ä¸€ä¸ªæ ˆç”¨äºä¿å­˜æ¯ä¸€æ­¥ä¹‹ä¸­çš„æœ€å°å€¼--è®°ä¸ºStackMin
  */
 
 public class GetMinStack {
-	
+
 	private Stack<Integer> stackData;
 	private Stack<Integer> stackMin;
 
@@ -20,32 +20,41 @@ public class GetMinStack {
 		this.stackData = new Stack<Integer>();
 		this.stackMin = new Stack<Integer>();
 	}
-	
+
 	public void push(int newNum) {
-		if (this.stackMin.isEmpty()) { //×îĞ¡Õ»Îª¿Õ£¬ÔòÑ¹Èë
+		if (this.stackMin.isEmpty()) { //æœ€å°æ ˆä¸ºç©ºï¼Œåˆ™å‹å…¥
 			this.stackMin.push(newNum);
-		}else if (newNum <= this.getMin()) {	// ºóÀ´µÄ³ÌĞò±ÈÇ°ÃæµÄ×îĞ¡Õ»ÒªĞ¡£¬ÔòÑ¹Èë
+		}else if (newNum <= this.getMin()) {	// åæ¥çš„ç¨‹åºæ¯”å‰é¢çš„æœ€å°æ ˆè¦å°ï¼Œåˆ™å‹å…¥
 			this.stackMin.push(newNum);
 		}
-		this.stackData.push(newNum);  // Êµ¼ÊÕ»×ÜÊÇÑ¹ÈëÔªËØ
+		this.stackData.push(newNum);  // å®é™…æ ˆæ€»æ˜¯å‹å…¥å…ƒç´ 
 	}
-	
+
 	public int pop() {
-		if (this.stackData.isEmpty()){  // Êµ¼ÊÕ»Îª¿Õ£¬±¨´í
+		if (this.stackData.isEmpty()){  // å®é™…æ ˆä¸ºç©ºï¼ŒæŠ¥é”™
 			throw new RuntimeException("Your stack is Empty");
 		}
-		int num = this.stackData.pop(); // Èç¹ûÊµ¼ÊÕ»³öÕ»µÄÔªËØÓë×îĞ¡Õ»ÏàÍ¬£¬ÔòÒ»²¢µ¯³ö
+		int num = this.stackData.pop(); // å¦‚æœå®é™…æ ˆå‡ºæ ˆçš„å…ƒç´ ä¸æœ€å°æ ˆç›¸åŒï¼Œåˆ™ä¸€å¹¶å¼¹å‡º
 		if (num == this.getMin()){
 			this.stackMin.pop();
 		}
 		return num;
 	}
-	
+
 	public  int getMin() {
 		if (this.stackMin.isEmpty()){
 			throw new RuntimeException("your stack is Empty");
 		}
-		return this.stackMin.peek(); // ×îĞ¡Õ»µÄÕ»¶¥ÔªËØ¾ÍÊÇÕû¸öÕ»ÖĞµÄ×îĞ¡ÔªËØ
+		return this.stackMin.peek(); // æœ€å°æ ˆçš„æ ˆé¡¶å…ƒç´ å°±æ˜¯æ•´ä¸ªæ ˆä¸­çš„æœ€å°å…ƒç´ 
 	}
-	
+
+	public void testMinStack() {
+		int[]  arr = {7,4,5,6,5};
+		GetMinStack mst = new GetMinStack();
+		for (int i : arr) {
+			mst.push(i);
+		}
+		System.out.println(mst.getMin());
+	}
+
 }
