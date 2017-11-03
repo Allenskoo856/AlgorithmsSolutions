@@ -1,5 +1,6 @@
 .settings/
 bin/
+out/production
 *.class
 .project
 .idea/
