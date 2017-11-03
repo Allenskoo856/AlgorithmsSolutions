@@ -52,7 +52,6 @@ public class BubbleSort {
         Integer[] arr1 = SortTestHelper.generateRandomArray(N, 0, N);
         Integer[] arr2 = Arrays.copyOf(arr1, arr1.length);
         Integer[] arr3 = Arrays.copyOf(arr1, arr1.length);
-        Integer[] arr4 = Arrays.copyOf(arr1, arr1.length);
 
         SortTestHelper.testSort("me.zonglun.Sort.SelectionSort", arr1);
         SortTestHelper.testSort("me.zonglun.Sort.InsertionSort", arr2);
