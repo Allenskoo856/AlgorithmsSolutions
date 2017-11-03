@@ -1,5 +1,6 @@
 package me.zonglun.Sort;
 
+
 /*
  *  1. 选择排序(Selection-sort)是一种简单直观的排序算法。
  *  	它的工作原理：首先在未排序序列中找到最小（大）元素，存放到排序序列的起始位置，
@@ -33,39 +34,13 @@ public class SelectionSort {
     }
 
     public static void main(String[] args) {
-        // 测试Integer
-        Integer[] a = {10,9,8,7,6,5,4,3,2,1};
-        SelectionSort.sort(a);
-        for (int i : a) {
-            System.out.print(i + " ");
-        }
-        System.out.println();
-
-        // 测试Double
-        Double[] b = {4.4, 3.3, 2.2, 1.1};
-        SelectionSort.sort(b);
-        for (Double i : b){
-            System.out.print(i + " ");
-        }
-        System.out.println();
-
-        // 测试String
-        String[] c = {"D", "C", "B", "A"};
-        SelectionSort.sort(c);
-        for (String i : c) {
-            System.out.print(i + " ");
-        }
-        System.out.println();
-
-        // 测试自定义的类 Student
-        Student[] d = new Student[4];
-        d[0] = new Student("D",90);
-        d[1] = new Student("C",100);
-        d[2] = new Student("B",95);
-        d[3] = new Student("A",95);
-        SelectionSort.sort(d);
-        for( int i = 0 ; i < d.length ; i ++ )
-            System.out.println(d[i]);
+        // 测试排序算法辅助函数
+        int N = 20000;
+        Integer[] arr = SortTestHelper.generateRandomArray(N, 0, 100000);
+        long startTime = System.currentTimeMillis();
+        SelectionSort.sort(arr);
+        long endTime = System.currentTimeMillis();
+        System.out.println(  " SelectionSort sort for 100000 Random Numbers: " + (endTime-startTime) + "ms" );
     }
 
 }
