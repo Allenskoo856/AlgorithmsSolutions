@@ -18,6 +18,7 @@ import java.util.Arrays;
  * <1>.把长度为n的输入序列分成两个长度为n/2的子序列；<br>
  * <2>.对这两个子序列分别采用归并排序；            <br>
  * <3>.将两个排序好的子序列合并成一个最终的排序序列。 <br>
+ * 时间复杂度o（nlogn） 但是需要多开辟临时空间 o（n）
  *
  * @author Administrator
  * @create 2017/11/3 0003
@@ -30,18 +31,26 @@ public class MergeSort {
     // 将arr[l...mid]和arr[mid+1...r]两部分进行归并
     private static void merge(Comparable[] arr, int l, int mid, int r) {
 
+        // 创建额外大小的空间的数组用来归并两边已经排好序的 半 数组
         Comparable[] aux = Arrays.copyOfRange(arr, l, r + 1);
 
         // 初始化，i指向左半部分的起始索引位置l；j指向右半部分起始索引位置mid+1
         int i = l, j = mid + 1;
-        for (int k = l; k <= r; k++) {
+        for (int k = l; k <= r; k++) {      // K 的指针是额外数组的索引指针
+
 
             if (i > mid) {  // 如果左半部分元素已经全部处理完毕
-                arr[k] = aux[j - l];
+                arr[k] = aux[j - l];    // 此时右边值已经有序了，直接赋值给arr【k】即可
                 j++;
             } else if (j > r) {   // 如果右半部分元素已经全部处理完毕
-                arr[k] = aux[i - l];
+                arr[k] = aux[i - l];     // 同理
                 i++;
+                /*特别注意额外空间的索引值不一样，aux的索引必须为 i - l 代表左边部分元素
+                  aux： 0 1 2  3 4 5 6 7 8  9
+                            i   mid      j
+                  arr:  l
+                        (K)--指针移动来排序
+                ，应为其中有错开*/
             } else if (aux[i - l].compareTo(aux[j - l]) < 0) {  // 左半部分所指元素 < 右半部分所指元素
                 arr[k] = aux[i - l];
                 i++;
