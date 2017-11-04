@@ -36,7 +36,7 @@ public class SortTestHelper {
     // swapTimes定义了数组的无序程度:
     // swapTimes == 0 时, 数组完全有序
     // swapTimes 越大, 数组越趋向于无序
-    public static Integer[] generateNearlyOrderedArray(int n, int swapTimes){
+    static Integer[] generateNearlyOrderedArray(int n, int swapTimes){
 
         Integer[] arr = new Integer[n];
         for( int i = 0 ; i < n ; i ++ )
