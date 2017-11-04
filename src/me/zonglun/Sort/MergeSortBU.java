@@ -23,7 +23,9 @@ public class MergeSortBU {
         for (int size = 1; size < n; size *= 2)
             for (int i = 0; i < n - size; i += size + size)
                 // 对 arr[i...i+sz-1] 和 arr[i+sz...i+2*sz-1] 进行归并
-                merge(arr, i, i + size - 1, Math.min(i + 2 * size - 1, n - 1));
+                // 对于arr[mid] <= arr[mid+1]的情况,不进行merge
+                if (arr[i + size - 1].compareTo(arr[i + size]) > 0)
+                    merge(arr, i, i + size - 1, Math.min(i + 2 * size - 1, n - 1));
     }
 
     private static void merge(Comparable[] arr, int l, int mid, int r) {
