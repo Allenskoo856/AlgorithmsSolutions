@@ -29,7 +29,7 @@ public class MergeSort {
     }
 
     // 将arr[l...mid]和arr[mid+1...r]两部分进行归并
-    private static void merge(Comparable[] arr, int l, int mid, int r) {
+    public static void merge(Comparable[] arr, int l, int mid, int r) {
 
         // 创建额外大小的空间的数组用来归并两边已经排好序的 半 数组
         Comparable[] aux = Arrays.copyOfRange(arr, l, r + 1);
