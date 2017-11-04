@@ -28,18 +28,23 @@ public class QuickSort {
     }
 
     // 对arr[l...r]部分进行partition操作
+    //  arr: l --- p-1 -- p -- p+1 -----r  保证前两部分呢都排好序
     // 返回p, 使得arr[l...p-1] < arr[p] ; arr[p+1...r] > arr[p]
     private static int partition(Comparable[] arr, int l, int r) {
 
-        Comparable v = arr[l];
-
+        /*  图示数组：  v | ---  <V --- | --- >V ---| e
+        *
+        *   索引       l | ---  ------|j|-------| i
+        * */
+        Comparable v = arr[l]; // 最开始的值
+        // 取J 作为分割两边的 中间点
         int j = l;      // arr[l+1...j] < v ; arr[j+1...i) > v
-        for (int i = l + 1; i <= r; i++)
-            if (arr[i].compareTo(v) < 0) {
+        for (int i = l + 1; i <= r; i++)        // 当前正在访问的索引值记为 i
+            if (arr[i].compareTo(v) < 0) {  // 如果当前元素比第一个值要下，则将其放到前半部分的最后一个元素，然后 j 后移一位
+                swap(arr, j + 1, i);
                 j++;
-                swap(arr, j, i);
-            }
-        swap(arr, l, j);
+            }   // 如果当前元素比第一个值要大，则将其放到后半部分的最后位置，此时不用做啥，i后移一位即可
+        swap(arr, l, j);    // 前面排序完成之后，将 V 和 J 的值交换位置
         return j;
     }
 
@@ -51,6 +56,7 @@ public class QuickSort {
 
     // 递归使用快速排序,对arr[l...r]的范围进行排序
     private static void sort(Comparable[] arr, int l, int r) {
+
         if (l >= r)
             return;
         int p = partition(arr, l, r);
