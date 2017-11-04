@@ -48,6 +48,7 @@ public class QuickSortThreeWays {
         swap(arr, l, (int) (Math.random() * (r - l + 1)) + l);
         Comparable v = arr[l];
 
+        // partition部分start
         int lt = l;     // arr[l+1...lt] < v
         int gt = r + 1; // arr[gt...r] > v
         int i = l + 1;    // arr[lt+1...i) == v
