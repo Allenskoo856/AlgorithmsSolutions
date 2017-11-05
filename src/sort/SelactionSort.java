@@ -5,8 +5,8 @@ import edu.princeton.cs.algs4.StdOut;
 public class SelactionSort {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		long begin = System.currentTimeMillis(); // 定义开始运行时间
+
+		long begin = System.currentTimeMillis();
 		int[] a = {3,44,38,5,47,15,36,26,27,2,46,4,19,50,48};
 		int[] ms = sort(a);
 		long end = System.currentTimeMillis(); 
