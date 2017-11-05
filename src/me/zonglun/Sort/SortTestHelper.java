@@ -53,6 +53,23 @@ public class SortTestHelper {
         return arr;
     }
 
+    // 生成一个完全有序的数组
+    static Integer[] generateOrderedArray(int n){
+
+        return generateNearlyOrderedArray(n, 0);
+    }
+
+    // 生成一个完全逆序的数组
+    static Integer[] generateInverseArray(int n){
+        Integer[] arr = generateOrderedArray( n );
+        for( int i = n/2 - 1 ; i >= 0 ; i -- ){
+            Integer t = arr[i];
+            arr[i] = arr[n-i-1];
+            arr[n-i-1] = t;
+        }
+        return arr;
+    }
+
     // 打印arr数组的所有内容
     public static void printArray(Object arr[]) {
 
