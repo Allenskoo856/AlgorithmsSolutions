@@ -1209,7 +1209,7 @@ public static void RadixSort(int A[],int temp[],int n,int k,int r,int cnt[]){
 >
 > 归并排序：它有一定数量的数据移动，所以我们可能过与插入排序组合，先获得一定长度的序列，然后再合并，在效率上将有所提高。
 
- ----
+----
 
 
 
@@ -1243,10 +1243,10 @@ public static void RadixSort(int A[],int temp[],int n,int k,int r,int cnt[]){
 
 <div>
     <table border="1">
-	    <tr>
-	      <th>算    法</th>
-	      <th>是否稳定</th>
-	      <th>是否为原地排序</th>
+        <tr>
+          <th>算    法</th>
+          <th>是否稳定</th>
+          <th>是否为原地排序</th>
         <th>时间复杂度</th>
         <th>空间复杂度</th>
         <th>备    注</th>
@@ -1271,7 +1271,7 @@ public static void RadixSort(int A[],int temp[],int n,int k,int r,int cnt[]){
 	      <th>希尔排序</th>
 	      <th>否</th>
 	      <th>是</th>
-        <th>NlogN? N^(6/5)?</th>
+	    <th>NlogN? N^(6/5)?</th>
         <th>1</th>
         <th></th>
 	    </tr>
@@ -1279,7 +1279,7 @@ public static void RadixSort(int A[],int temp[],int n,int k,int r,int cnt[]){
 	      <th>快速排序</th>
 	      <th>否</th>
 	      <th>是</th>
-        <th>NlogN</th>
+	    <th>NlogN</th>
         <th>lgN</th>
         <th>运行效率由概率提供保证</th>
 	    </tr>
@@ -1303,9 +1303,9 @@ public static void RadixSort(int A[],int temp[],int n,int k,int r,int cnt[]){
 	      <th>堆排序</th>
 	      <th>否</th>
 	      <th>是</th>
-        <th>NlogN</th>
+	    <th>NlogN</th>
         <th>1</th>
         <th></th>
 	    </tr>
-    </table>
+	</table>
 </div>

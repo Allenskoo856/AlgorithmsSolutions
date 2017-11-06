@@ -19,12 +19,12 @@ package me.zonglun.Sort;
 // 我们的PrintableMaxHeap只能处理整数信息，所以继承的是MaxHeap<Comparable<Integer>>
 public class PrintableMaxHeap extends MaxHeap<Comparable<Integer>> {
 
-    public PrintableMaxHeap(int capacity) {
+    private PrintableMaxHeap(int capacity) {
         super(capacity);
     }
 
     // 以树状打印整个堆结构
-    public void treePrint() {
+    private void treePrint() {
 
         if (size() >= 100) {
             System.out.println("This print function can only work for less than 100 integer");
