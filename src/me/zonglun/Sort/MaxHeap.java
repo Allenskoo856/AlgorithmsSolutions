@@ -28,6 +28,20 @@ public class MaxHeap<T extends Comparable> {
         this.capacity = capacity;
     }
 
+    // 构造函数, 通过一个给定数组创建一个最大堆
+    // 此外堆的Heapify过程，用来构造数组为堆
+    // 该构造堆的过程, 时间复杂度为O(n)
+    public MaxHeap(T arr[]) {
+        int n = arr.length;
+        data = (T[]) new Comparable[n + 1];
+        capacity = n;
+        System.arraycopy(arr, 0, data, 1, n);
+        count = n;
+        for (int i = count / 2; i >= 1; i--) {
+            shiftDown(i);
+        }
+    }
+
     public int size() {
         return count;
     }
