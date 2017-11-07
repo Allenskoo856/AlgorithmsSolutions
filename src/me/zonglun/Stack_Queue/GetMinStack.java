@@ -48,6 +48,7 @@ public class GetMinStack {
 		return this.stackMin.peek(); // 最小栈的栈顶元素就是整个栈中的最小元素
 	}
 
+	@SuppressWarnings("unused")
 	public void testMinStack() {
 		int[]  arr = {7,4,5,6,5};
 		GetMinStack mst = new GetMinStack();
