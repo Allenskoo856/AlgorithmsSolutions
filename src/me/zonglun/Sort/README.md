@@ -61,55 +61,9 @@
 
 ![mark](https://ojd94jpsx.qnssl.com/blog/20170910/211414701.jpg)
 
-#### Java 代码实现
+#### [Java 代码实现](https://github.com/Allenskoo856/AlgorithmsSolutions/blob/master/src/me/zonglun/Sort/BubbleSort.java)
 
-```java
-public static void BubbleSort(int [] arr){
 
-     int temp;//临时变量
-     for(int i=0; i<arr.length-1; i++){   //表示趟数，一共arr.length-1次。
-         for(int j=arr.length-1; j>i; j--){
-
-             if(arr[j] < arr[j-1]){
-                 temp = arr[j];
-                 arr[j] = arr[j-1];
-                 arr[j-1] = temp;
-             }
-         }
-     }
- }
-```
-
-#### 优化后的代码
-
-1. - **针对问题：**
-     数据的顺序排好之后，冒泡算法仍然会继续进行下一轮的比较，直到arr.length-1次，后面的比较没有意义的。
-
-2. - **方案：**
-     设置标志位flag，如果发生了交换flag设置为true；如果没有交换就设置为false。
-     这样当一轮比较结束后如果flag仍为false，即：这一轮没有发生交换，说明数据的顺序已经排好，没有必要继续进行下去。
-
-     ```java
-     public static void BubbleSort1(int [] arr){
-
-        int temp;//临时变量
-        boolean flag;//是否交换的标志
-        for(int i=0; i<arr.length-1; i++){   //表示趟数，一共arr.length-1次。
-
-            flag = false;
-            for(int j=arr.length-1; j>i; j--){
-
-                if(arr[j] < arr[j-1]){
-                    temp = arr[j];
-                    arr[j] = arr[j-1];
-                    arr[j-1] = temp;
-                    flag = true;
-                }
-            }
-            if(!flag) break;
-        }
-     }
-     ```
 
 #### JS 代码实现
 
@@ -133,28 +87,7 @@ console.log(bubbleSort(arr));//[2, 3, 4, 5, 15, 19, 26, 27, 36, 38, 44, 46, 47, 
 
 > **改进冒泡排序： **设置一标志性变量pos,用于记录每趟排序中最后一次进行交换的位置。由于pos位置之后的记录均已交换到位,故在进行下一趟排序时只要扫描到pos位置即可。
 
-```javascript
-
-function bubbleSort2(arr) {
-    console.time('改进后冒泡排序耗时');
-    var i = arr.length-1;  //初始时,最后位置保持不变
-    while ( i> 0) {
-        var pos= 0; //每趟开始时,无记录交换
-        for (var j= 0; j< i; j++)
-            if (arr[j]> arr[j+1]) {
-                pos= j; //记录交换的位置
-                var tmp = arr[j]; arr[j]=arr[j+1];arr[j+1]=tmp;
-            }
-        i= pos; //为下一趟排序作准备
-     }
-     console.timeEnd('改进后冒泡排序耗时');
-     return arr;
-}
-var arr=[3,44,38,5,47,15,36,26,27,2,46,4,19,50,48];
-console.log(bubbleSort2(arr));//[2, 3, 4, 5, 15, 19, 26, 27, 36, 38, 44, 46, 47, 48, 50]
-```
-
-改进后的算法实现为:
+改进的算法实现为:
 
 ```javascript
 function bubbleSort3(arr3) {
@@ -219,27 +152,7 @@ console.log(bubbleSort3(arr));//[2, 3, 4, 5, 15, 19, 26, 27, 36, 38, 44, 46, 47,
 
 - 过程：![mark](https://ojd94jpsx.qnssl.com/blog/20170910/213413190.png)
 
-- **java代码实现：**
-
-  ```java
-  public static void select_sort(int array[],int lenth){
-
-     for(int i=0;i<lenth-1;i++){
-
-         int minIndex = i;
-         for(int j=i+1;j<lenth;j++){
-            if(array[j]<array[minIndex]){
-                minIndex = j;
-            }
-         }
-         if(minIndex != i){
-             int temp = array[i];
-             array[i] = array[minIndex];
-             array[minIndex] = temp;
-         }
-     }
-  }
-  ```
+- [**java代码实现：**](https://github.com/Allenskoo856/AlgorithmsSolutions/blob/master/src/me/zonglun/Sort/SelectionSort.java)
 
   动态过程分析：
 
@@ -307,26 +220,7 @@ console.log(selectionSort(arr));//[2, 3, 4, 5, 15, 19, 26, 27, 36, 38, 44, 46, 4
 
 #### (4) 代码实现
 
-##### Java代码实现
-
-```java
-public static void  insert_sort(int array[],int lenth){
-
-   int temp;
-
-   for(int i=0;i<lenth-1;i++){
-       for(int j=i+1;j>0;j--){
-           if(array[j] < array[j-1]){
-               temp = array[j-1];
-               array[j-1] = array[j];
-               array[j] = temp;
-           }else{         //不需要交换
-               break;
-           }
-       }
-   }
-}
-```
+##### [Java代码实现](https://github.com/Allenskoo856/AlgorithmsSolutions/blob/master/src/me/zonglun/Sort/InsertionSort.java)
 
 JS 代码实现
 
@@ -351,38 +245,7 @@ function insertionSort(array) {
 }
 ```
 
-> **改进插入排序：** 查找插入位置时使用二分查找的方式
 
-```javascript
-function binaryInsertionSort(array) {
-    if (Object.prototype.toString.call(array).slice(8, -1) === 'Array') {
-        console.time('二分插入排序耗时：');
-
-        for (var i = 1; i < array.length; i++) {
-            var key = array[i], left = 0, right = i - 1;
-            while (left <= right) {
-                var middle = parseInt((left + right) / 2);
-                if (key < array[middle]) {
-                    right = middle - 1;
-                } else {
-                    left = middle + 1;
-                }
-            }
-            for (var j = i - 1; j >= left; j--) {
-                array[j + 1] = array[j];
-            }
-            array[left] = key;
-        }
-        console.timeEnd('二分插入排序耗时：');
-
-        return array;
-    } else {
-        return 'array is not an Array!';
-    }
-}
-var arr=[3,44,38,5,47,15,36,26,27,2,46,4,19,50,48];
-console.log(binaryInsertionSort(arr));//[2, 3, 4, 5, 15, 19, 26, 27, 36, 38, 44, 46, 47, 48, 50]
-```
 
 ![mark](https://ojd94jpsx.qnssl.com/blog/20170910/214559384.gif)
 
@@ -414,6 +277,8 @@ console.log(binaryInsertionSort(arr));//[2, 3, 4, 5, 15, 19, 26, 27, 36, 38, 44,
 - <1>. 选择一个增量序列t1，t2，…，tk，其中ti>tj，tk=1；
 - <2>.按增量序列个数k，对序列进行k 趟排序；
 - <3>.每趟排序，根据对应的增量ti，将待排序列分割成若干长度为m 的子序列，分别对各子表进行直接插入排序。仅增量因子为1 时，整个序列作为一个表来处理，表长度即为整个序列的长度。
+
+#### [Java实现](https://github.com/Allenskoo856/AlgorithmsSolutions/blob/master/src/me/zonglun/Sort/ShellSort.java)
 
 ```javascript
 function shellSort(arr) {
@@ -447,38 +312,6 @@ console.log(shellSort(arr));//[2, 3, 4, 5, 15, 19, 26, 27, 36, 38, 44, 46, 47, 4
 ![mark](https://ojd94jpsx.qnssl.com/blog/20170913/101659655.gif)
 
 **以23, 10, 4, 1的步长序列进行希尔排序。**
-
-```java
-public static void shell_sort(int array[],int lenth){
-
-   int temp = 0;
-   int incre = lenth;
-
-   while(true){
-       incre = incre/2;
-
-       for(int k = 0;k<incre;k++){    //根据增量分为若干子序列
-
-           for(int i=k+incre;i<lenth;i+=incre){
-
-               for(int j=i;j>k;j-=incre){
-                   if(array[j]<array[j-incre]){
-                       temp = array[j-incre];
-                       array[j-incre] = array[j];
-                       array[j] = temp;
-                   }else{
-                       break;
-                   }
-               }
-           }
-       }
-
-       if(incre == 1){
-           break;
-       }
-   }
-}
-```
 
 #### (4) 算法分析
 
@@ -550,53 +383,9 @@ var arr=[3,44,38,5,47,15,36,26,27,2,46,4,19,50,48];
 console.log(mergeSort(arr));
 ```
 
-*Java代码分析*
+[*Java代码分析*](https://github.com/Allenskoo856/AlgorithmsSolutions/blob/master/src/me/zonglun/Sort/MergeSort.java)
 
-```java
-public static void merge_sort(int a[],int first,int last,int temp[]){
-
-  if(first < last){
-      int middle = (first + last)/2;
-      merge_sort(a,first,middle,temp);//左半部分排好序
-      merge_sort(a,middle+1,last,temp);//右半部分排好序
-      mergeArray(a,first,middle,last,temp); //合并左右部分
-  }
-}
-
-//合并 ：将两个序列a[first-middle],a[middle+1-end]合并
-public static void mergeArray(int a[],int first,int middle,int end,int temp[]){     
-  int i = first;
-  int m = middle;
-  int j = middle+1;
-  int n = end;
-  int k = 0; 
-  while(i<=m && j<=n){
-      if(a[i] <= a[j]){
-          temp[k] = a[i];
-          k++;
-          i++;
-      }else{
-          temp[k] = a[j];
-          k++;
-          j++;
-      }
-  }     
-  while(i<=m){
-      temp[k] = a[i];
-      k++;
-      i++;
-  }     
-  while(j<=n){
-      temp[k] = a[j];
-      k++;
-      j++; 
-  }
-
-  for(int ii=0;ii<k;ii++){
-      a[first + ii] = temp[ii];
-  }
-}
-```
+[自顶向上的归并排序](https://github.com/Allenskoo856/AlgorithmsSolutions/blob/master/src/me/zonglun/Sort/MergeSortBU.java)
 
 #### (5) 算法分析复杂度
 
@@ -679,36 +468,12 @@ console.log(quickSort(arr,0,arr.length-1));//[2, 3, 4, 5, 15, 19, 26, 27, 36, 38
 console.log(quickSort2(arr));//[2, 3, 4, 5, 15, 19, 26, 27, 36, 38, 44, 46, 47, 48, 50]
 ```
 
-```java
-public static void quickSort(int a[],int l,int r){
-     if(l>=r)
-       return;
-
-     int i = l; int j = r; int key = a[l];//选择第一个数为key
-
-     while(i<j){
-
-         while(i<j && a[j]>=key)//从右向左找第一个小于key的值
-             j--;
-         if(i<j){
-             a[i] = a[j];
-             i++;
-         }
-
-         while(i<j && a[i]<key)//从左向右找第一个大于key的值
-             i++;
-
-         if(i<j){
-             a[j] = a[i];
-             j--;
-         }
-     }
-     //i == j
-     a[i] = key;
-     quickSort(a, l, i-1);//递归调用
-     quickSort(a, i+1, r);//递归调用
- }
-```
+| Java实现  |                                          |
+| ------- | ---------------------------------------- |
+| 快排第一个版本 | [**QuickSort.java**](https://github.com/Allenskoo856/AlgorithmsSolutions/blob/master/src/me/zonglun/Sort/QuickSort.java) |
+| 快排优化    | [**QuickSortOptimize.java**](https://github.com/Allenskoo856/AlgorithmsSolutions/blob/master/src/me/zonglun/Sort/QuickSortOptimize.java) |
+| 二路快排    | [**QuickSort2Ways.java**](https://github.com/Allenskoo856/AlgorithmsSolutions/blob/master/src/me/zonglun/Sort/QuickSort2Ways.java) |
+| 三路快排    | [**QuickSortThreeWays**](https://github.com/Allenskoo856/AlgorithmsSolutions/blob/master/src/me/zonglun/Sort/QuickSortThreeWays.java) |
 
 **快速排序动图演示：**
 
@@ -806,50 +571,12 @@ console.log(heapSort(arr));//[10, 13, 20, 22, 30, 31, 35, 46, 60, 65, 65, 77, 81
 
 #### （3）代码实现
 
-```java
-//构建最小堆
-public static void MakeMinHeap(int a[], int n){
-   for(int i=(n-1)/2 ; i>=0 ; i--){
-       MinHeapFixdown(a,i,n);
-   }
-}
-//从i节点开始调整,n为节点总数 从0开始计算 i节点的子节点为 2*i+1, 2*i+2  
-public static void MinHeapFixdown(int a[],int i,int n){
-
-   int j = 2*i+1; //子节点
-   int temp = 0;
-
-   while(j<n){
-       //在左右子节点中寻找最小的
-       if(j+1<n && a[j+1]<a[j]){   
-           j++;
-       }
-
-       if(a[i] <= a[j])
-           break;
-
-       //较大节点下移
-       temp = a[i];
-       a[i] = a[j];
-       a[j] = temp;
-
-       i = j;
-       j = 2*i+1;
-   }
-}
-
-public static void MinHeap_Sort(int a[],int n){
-  int temp = 0;
-  MakeMinHeap(a,n);
-
-  for(int i=n-1;i>0;i--){
-      temp = a[0];
-      a[0] = a[i];
-      a[i] = temp; 
-      MinHeapFixdown(a,0,i);
-  }     
-}
-```
+| 堆排序  | 地址                                       |
+| ---- | ---------------------------------------- |
+| 最大堆  | [**MaxHeap.java**](https://github.com/Allenskoo856/AlgorithmsSolutions/blob/master/src/me/zonglun/Sort/MaxHeap.java) |
+| 堆排序1 | [**HeapSort1.java**](https://github.com/Allenskoo856/AlgorithmsSolutions/blob/master/src/me/zonglun/Sort/HeapSort1.java) |
+| 堆排序2 | [**HeapSort2.java**](https://github.com/Allenskoo856/AlgorithmsSolutions/blob/master/src/me/zonglun/Sort/HeapSort2.java) |
+| 堆排序3 | [**HeapSort3.java**](https://github.com/Allenskoo856/AlgorithmsSolutions/blob/master/src/me/zonglun/Sort/HeapSort3.java) |
 
 ```javascript
 /*方法说明：堆排序
@@ -910,147 +637,11 @@ console.log(heapSort(arr));//[10, 13, 20, 22, 30, 31, 35, 46, 60, 65, 65, 77, 81
 - 平均情况：T(n) = O(nlogn)
 
 
-----
-
-### 8. 计数排序（Counting Sort）
-
-> 计数排序的核心在于将输入的数据值转化为键存储在额外开辟的数组空间中。
-> 作为一种线性时间复杂度的排序，计数排序要求输入的数据必须是有确定范围的整数。
-
-#### (1)算法简介
-
-> 计数排序(Counting sort)是一种稳定的排序算法。计数排序使用一个额外的数组C，其中第i个元素是待排序数组A中值等于i的元素的个数。然后根据数组C来将A中的元素排到正确的位置。它只能对整数进行排序。
-
-#### (2)算法描述和实现
-
-具体算法描述如下：
-
-- <1>. 找出待排序的数组中最大和最小的元素；
-- <2>. 统计数组中每个值为i的元素出现的次数，存入数组C的第i项；
-- <3>. 对所有的计数累加（从C中的第一个元素开始，每一项和前一项相加）；
-- <4>. 反向填充目标数组：将每个元素i放在新数组的第C(i)项，每放一个元素就将C(i)减去1。
-
-**Javascript代码实现：**
-
-```javascript
-function countingSort(array) {
-    var len = array.length,
-        B = [],
-        C = [],
-        min = max = array[0];
-    console.time('计数排序耗时');
-    for (var i = 0; i < len; i++) {
-        min = min <= array[i] ? min : array[i];
-        max = max >= array[i] ? max : array[i];
-        C[array[i]] = C[array[i]] ? C[array[i]] + 1 : 1;
-    }
-    for (var j = min; j < max; j++) {
-        C[j + 1] = (C[j + 1] || 0) + (C[j] || 0);
-    }
-    for (var k = len - 1; k >= 0; k--) {
-        B[C[array[k]] - 1] = array[k];
-        C[array[k]]--;
-    }
-    console.timeEnd('计数排序耗时');
-    return B;
-}
-var arr = [2, 2, 3, 8, 7, 1, 2, 2, 2, 7, 3, 9, 8, 2, 1, 4, 2, 4, 6, 9, 2];
-console.log(countingSort(arr)); //[1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 4, 4, 6, 7, 7, 8, 8, 9, 9]
-```
-
-**JavaScript动图演示：**、
-
-![这里写图片描述](http://img.blog.csdn.net/20160917110641479)
-
-#### (3)算法分析
-
-> 当输入的元素是n 个0到k之间的整数时，它的运行时间是 O(n + k)。计数排序不是比较排序，排序的速度快于任何比较排序算法。由于用来计数的数组C的长度取决于待排序数组中数据的范围（等于待排序数组的最大值与最小值的差加上1），这使得计数排序对于数据范围很大的数组，需要大量时间和内存。
-
-- 最佳情况：T(n) = O(n+k)
-- 最差情况：T(n) = O(n+k)
-- 平均情况：T(n) = O(n+k)
+---
 
 
------
 
-### 9. 桶排序（Bucket Sort）
-
-> 桶排序是计数排序的升级版。它利用了函数的映射关系，高效与否的关键就在于这个映射函数的确定。
-
-#### (1)算法简介
-
-> 桶排序 (Bucket sort)的工作的原理：假设输入数据服从均匀分布，将数据分到有限数量的桶里，每个桶再分别排序（有可能再使用别的排序算法或是以递归方式继续使用桶排序进行排
-
-#### (2)算法描述和实现
-
-具体算法描述如下：
-
-- <1>.设置一个定量的数组当作空桶；
-- <2>.遍历输入数据，并且把数据一个一个放到对应的桶里去；
-- <3>.对每个不是空的桶进行排序；
-- <4>.从不是空的桶里把排好序的数据拼接起来。
-
-**Javascript代码实现:**
-
-```javascript
-/*方法说明：桶排序
-@param  array 数组
-@param  num   桶的数量*/
-function bucketSort(array, num) {
-    if (array.length <= 1) {
-        return array;
-    }
-    var len = array.length, buckets = [], result = [], min = max = array[0], regex = '/^[1-9]+[0-9]*$/', space, n = 0;
-    num = num || ((num > 1 && regex.test(num)) ? num : 10);
-    console.time('桶排序耗时');
-    for (var i = 1; i < len; i++) {
-        min = min <= array[i] ? min : array[i];
-        max = max >= array[i] ? max : array[i];
-    }
-    space = (max - min + 1) / num;
-    for (var j = 0; j < len; j++) {
-        var index = Math.floor((array[j] - min) / space);
-        if (buckets[index]) {   //  非空桶，插入排序
-            var k = buckets[index].length - 1;
-            while (k >= 0 && buckets[index][k] > array[j]) {
-                buckets[index][k + 1] = buckets[index][k];
-                k--;
-            }
-            buckets[index][k + 1] = array[j];
-        } else {    //空桶，初始化
-            buckets[index] = [];
-            buckets[index].push(array[j]);
-        }
-    }
-    while (n < num) {
-        result = result.concat(buckets[n]);
-        n++;
-    }
-    console.timeEnd('桶排序耗时');
-    return result;
-}
-var arr=[3,44,38,5,47,15,36,26,27,2,46,4,19,50,48];
-console.log(bucketSort(arr,4));//[2, 3, 4, 5, 15, 19, 26, 27, 36, 38, 44, 46, 47, 48, 50]
-```
-
-**桶排序图示（图片来源网络）：**
-
-![这里写图片描述](http://img.blog.csdn.net/20160917111945979)
-
-关于桶排序[更多](http://www.cnblogs.com/lonelyxmas/p/3561938.html)
-
-#### (3)算法分析
-
-> 　桶排序最好情况下使用线性时间O(n)，桶排序的时间复杂度，取决与对各个桶之间数据进行排序的时间复杂度，因为其它部分的时间复杂度都为O(n)。很显然，桶划分的越小，各个桶之间的数据越少，排序所用的时间也会越少。但相应的空间消耗就会增大。
-
-- 最佳情况：T(n) = O(n+k)
-- 最差情况：T(n) = O(n+k)
-- 平均情况：T(n) = O(n2)
-
-
------
-
-### 10. 基数排序（Radix Sort）
+### 8. 基数排序（Radix Sort）
 
 > 基数排序也是非比较的排序算法，对每一位进行排序，从最低位开始排序，复杂度为O(kn),为数组长度，k为数组中的数的最大的位数；
 
@@ -1067,6 +658,8 @@ console.log(bucketSort(arr,4));//[2, 3, 4, 5, 15, 19, 26, 27, 36, 38, 44, 46, 47
 - <3>.对radix进行计数排序（利用计数排序适用于小范围数的特点）；
 
 **Javascript代码实现：**
+
+[**Java实现**](https://github.com/Allenskoo856/AlgorithmsSolutions/blob/master/src/me/zonglun/Sort/RadixSort.java)
 
 ```javascript
 /**
@@ -1107,41 +700,6 @@ function radixSort(arr, maxDigit) {
 }
 var arr = [3, 44, 38, 5, 47, 15, 36, 26, 27, 2, 46, 4, 19, 50, 48];
 console.log(radixSort(arr,2)); //[2, 3, 4, 5, 15, 19, 26, 27, 36, 38, 44, 46, 47, 48, 50]
-```
-
-```java
-public static void RadixSort(int A[],int temp[],int n,int k,int r,int cnt[]){
-
-   //A:原数组
-   //temp:临时数组
-   //n:序列的数字个数
-   //k:最大的位数2
-   //r:基数10
-   //cnt:存储bin[i]的个数
-
-   for(int i=0 , rtok=1; i<k ; i++ ,rtok = rtok*r){
-
-       //初始化
-       for(int j=0;j<r;j++){
-           cnt[j] = 0;
-       }
-       //计算每个箱子的数字个数
-       for(int j=0;j<n;j++){
-           cnt[(A[j]/rtok)%r]++;
-       }
-       //cnt[j]的个数修改为前j个箱子一共有几个数字
-       for(int j=1;j<r;j++){
-           cnt[j] = cnt[j-1] + cnt[j];
-       }
-       for(int j = n-1;j>=0;j--){      //重点理解
-           cnt[(A[j]/rtok)%r]--;
-           temp[cnt[(A[j]/rtok)%r]] = A[j];
-       }
-       for(int j=0;j<n;j++){
-           A[j] = temp[j];
-       }
-   }
-}
 ```
 
 **基数排序LSD动图演示：**
@@ -1238,74 +796,3 @@ public static void RadixSort(int A[],int temp[],int n,int k,int r,int cnt[]){
 > 　　2、记录的关键字位数较少，如果密集更好
 >
 > 　　3、如果是数字时，最好是无符号的，否则将增加相应的映射复杂度，可先将其正负分开排序。
-
-
-
-<div>
-    <table border="1">
-        <tr>
-          <th>算    法</th>
-          <th>是否稳定</th>
-          <th>是否为原地排序</th>
-        <th>时间复杂度</th>
-        <th>空间复杂度</th>
-        <th>备    注</th>
-	    </tr>
-	    <tr>
-	      <th>选择排序</th>
-	      <th>否</th>
-	      <th>是</th>
-        <th>N^2</th>
-        <th>1</th>
-        <th></th>
-	    </tr>
-	    <tr>
-	      <th>插入排序</th>
-	      <th>是</th>
-	      <th>是</th>
-        <th>介于N和N^2之间</th>
-        <th>1</th>
-        <th>取决于输入元素的排列情况</th>
-	    </tr>
-	    <tr>
-	      <th>希尔排序</th>
-	      <th>否</th>
-	      <th>是</th>
-	    <th>NlogN? N^(6/5)?</th>
-        <th>1</th>
-        <th></th>
-	    </tr>
-	    <tr>
-	      <th>快速排序</th>
-	      <th>否</th>
-	      <th>是</th>
-	    <th>NlogN</th>
-        <th>lgN</th>
-        <th>运行效率由概率提供保证</th>
-	    </tr>
-	    <tr>
-	      <th>三向快速排序</th>
-	      <th>否</th>
-	      <th>是</th>
-        <th>介于N和NlogN之间</th>
-        <th>lgN</th>
-        <th>运行效率由概率保证，同时也取决于输入元素的分布情况</th>
-	    </tr>
-	    <tr>
-	      <th>归并排序</th>
-	      <th>是</th>
-	      <th>否</th>
-        <th>NlogN</th>
-        <th>N</th>
-        <th></th>
-	    </tr>
-	    <tr>
-	      <th>堆排序</th>
-	      <th>否</th>
-	      <th>是</th>
-	    <th>NlogN</th>
-        <th>1</th>
-        <th></th>
-	    </tr>
-	</table>
-</div>
