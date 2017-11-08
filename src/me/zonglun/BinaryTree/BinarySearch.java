@@ -8,6 +8,8 @@
 
 package me.zonglun.BinaryTree;
 
+import java.util.stream.IntStream;
+
 /**
  * 〈一句话功能简述〉<br>
  * 〈BinarySearch 二分查找算法〉
@@ -51,12 +53,12 @@ public class BinarySearch {
         // 对于我们的待查找数组[0...N)
         // 对[0...N)区间的数值使用二分查找，最终结果应该就是数字本身
         // 对[N...2*N)区间的数值使用二分查找，因为这些数字不在arr中，结果为-1
-        for (int i = 0; i < 2 * N; i++) {
+        IntStream.range(0, 2 * N).forEach(i -> {
             int v = BinarySearch.find(arr, i);
             if (i < N)
                 assert v == i;
             else
                 assert v == -1;
-        }
+        });
     }
 }
