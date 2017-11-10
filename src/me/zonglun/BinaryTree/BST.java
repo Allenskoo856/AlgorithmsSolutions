@@ -10,6 +10,7 @@ package me.zonglun.BinaryTree;
 
 import org.jetbrains.annotations.Contract;
 
+import java.util.LinkedList;
 import java.util.Objects;
 
 /**
@@ -39,7 +40,7 @@ public class BST<Key extends Comparable, Value> {
     private int count;   // 树种的节点个数
 
     // 构造函数, 默认构造一棵空二分搜索树
-    public BST() {
+    BST() {
         root = null;
         count = 0;
     }
@@ -66,6 +67,83 @@ public class BST<Key extends Comparable, Value> {
     public Value search(Key key) {
         return search(root, key);
     }
+
+    void preOder() {
+        preOder(root);
+    }
+
+    void inOder() {
+        inOder(root);
+    }
+
+    void postOder() {
+        postOder(root);
+    }
+
+    // 对以node为根的二叉搜索树进行前序遍历, 递归算法
+    private void preOder(Node node) {
+        if (node != null) {
+            System.out.print(node.key + " ");
+            preOder(node.left);
+            preOder(node.right);
+        }
+    }
+
+    // 对以node为根的二叉搜索树进行中序遍历, 递归算法
+    private void inOder(Node node) {
+        if (node != null) {
+            inOder(node.left);
+            System.out.print(node.key + " ");
+            inOder(node.right);
+        }
+    }
+
+    // 对以node为根的二叉搜索树进行后序遍历, 递归算法
+    private void postOder(Node node) {
+        if (node != null) {
+            postOder(node.left);
+            postOder(node.right);
+            System.out.print(node.key + " ");
+        }
+    }
+
+    // 对以node为根的二叉搜索树进行层序遍历, 递归算法
+    public void levelOrder() {
+        // 我们使用LinkedList来作为我们的队列
+        LinkedList<Node> q = new LinkedList<>();
+        q.add(root);
+        while ( !q.isEmpty() ) {
+            Node node = q.remove();
+            System.out.print(node.key + " ");
+            if (node.left != null)
+                q.add(node.left);
+            if (node.right != null)
+                q.add(node.right);
+        }
+    }
+
+    public Key maximum() {
+        assert count != 0;
+        Node maxNode = maximum(root);
+        return maxNode.key;
+    }
+
+    // 返回以node为根的二分搜索树的最小键值所在的节点
+    private Node minimum(Node node){
+        if( node.left == null )
+            return node;
+
+        return minimum(node.left);
+    }
+
+    // 返回以node为根的二分搜索树的最大键值所在的节点
+    private Node maximum(Node node){
+        if( node.right == null )
+            return node;
+
+        return maximum(node.right);
+    }
+
 
     // 向以node为根的二分搜索树中, 插入节点(key, value), 使用递归算法
     // 返回插入新节点后的二分搜索树的根
