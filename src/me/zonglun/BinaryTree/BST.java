@@ -80,6 +80,86 @@ public class BST<Key extends Comparable, Value> {
         postOder(root);
     }
 
+    // 对以node为根的二叉搜索树进行层序遍历, 递归算法
+    void levelOrder() {
+        // 我们使用LinkedList来作为我们的队列
+        LinkedList<Node> q = new LinkedList<>();
+        q.add(root);
+        while (!q.isEmpty()) {
+            Node node = q.remove();
+            System.out.print(node.key + " ");
+            if (node.left != null)
+                q.add(node.left);
+            if (node.right != null)
+                q.add(node.right);
+        }
+    }
+
+
+    public Key maximum() {
+        assert count != 0;
+        Node maxNode = maximum(root);
+        return maxNode.key;
+    }
+
+    public Key minimum() {
+        assert count != 0;
+        Node minNode = minimum(root);
+        return minNode.key;
+    }
+
+    public void removeMin() {
+        if (root != null)
+            root = removeMin(root);
+    }
+
+    public void removeMax() {
+        if (root != null)
+            root = removeMax(root);
+    }
+
+    // 删除掉以node为根的二分搜索树中的最小节点
+    // 返回删除节点后新的二分搜索树的根
+    private Node removeMin(Node node) {
+        if (node.left == null) {
+            Node rightNode = node.right;
+            node.right = null;
+            count--;
+            return rightNode;
+        }
+        node.left = removeMin(node.left);
+        return node;
+    }
+
+    // 删除掉以node为根的二分搜索树中的最大节点
+    // 返回删除节点后新的二分搜索树的根
+    private Node removeMax(Node node) {
+        if (node.right == null) {
+            Node leftNode = node.left;
+            node.left = null;
+            count--;
+            return leftNode;
+        }
+        node.right = removeMax(node.right);
+        return node;
+    }
+
+    // 返回以node为根的二分搜索树的最小键值所在的节点
+    private Node minimum(Node node) {
+        if (node.left == null)
+            return node;
+
+        return minimum(node.left);
+    }
+
+    // 返回以node为根的二分搜索树的最大键值所在的节点
+    private Node maximum(Node node) {
+        if (node.right == null)
+            return node;
+
+        return maximum(node.right);
+    }
+
     // 对以node为根的二叉搜索树进行前序遍历, 递归算法
     private void preOder(Node node) {
         if (node != null) {
@@ -106,44 +186,6 @@ public class BST<Key extends Comparable, Value> {
             System.out.print(node.key + " ");
         }
     }
-
-    // 对以node为根的二叉搜索树进行层序遍历, 递归算法
-    public void levelOrder() {
-        // 我们使用LinkedList来作为我们的队列
-        LinkedList<Node> q = new LinkedList<>();
-        q.add(root);
-        while ( !q.isEmpty() ) {
-            Node node = q.remove();
-            System.out.print(node.key + " ");
-            if (node.left != null)
-                q.add(node.left);
-            if (node.right != null)
-                q.add(node.right);
-        }
-    }
-
-    public Key maximum() {
-        assert count != 0;
-        Node maxNode = maximum(root);
-        return maxNode.key;
-    }
-
-    // 返回以node为根的二分搜索树的最小键值所在的节点
-    private Node minimum(Node node){
-        if( node.left == null )
-            return node;
-
-        return minimum(node.left);
-    }
-
-    // 返回以node为根的二分搜索树的最大键值所在的节点
-    private Node maximum(Node node){
-        if( node.right == null )
-            return node;
-
-        return maximum(node.right);
-    }
-
 
     // 向以node为根的二分搜索树中, 插入节点(key, value), 使用递归算法
     // 返回插入新节点后的二分搜索树的根
