@@ -34,6 +34,13 @@ public class BST<Key extends Comparable, Value> {
             this.value = value;
             left = right = null;
         }
+
+        public Node(Node node){
+            this.key = node.key;
+            this.value = node.value;
+            this.left = node.left;
+            this.right = node.right;
+        }
     }
 
     private Node root;  // 根节点
@@ -96,26 +103,75 @@ public class BST<Key extends Comparable, Value> {
     }
 
 
-    public Key maximum() {
+    Key maximum() {
         assert count != 0;
         Node maxNode = maximum(root);
         return maxNode.key;
     }
 
-    public Key minimum() {
+    Key minimum() {
         assert count != 0;
         Node minNode = minimum(root);
         return minNode.key;
     }
 
-    public void removeMin() {
+    void removeMin() {
         if (root != null)
             root = removeMin(root);
     }
 
-    public void removeMax() {
+    void removeMax() {
         if (root != null)
             root = removeMax(root);
+    }
+
+    // 从二分搜索树中删除键值为key的节点
+    void remove(Key key) {
+        root = remove(root, key);
+    }
+
+    // 删除掉以node为根的二分搜索树中键值为key的节点, 递归算法
+    // 返回删除节点后新的二分搜索树的根
+
+    private Node remove(Node node, Key key) {
+        if (node == null)   // 没有剑值为 null 的节点
+            return null;
+        if (key.compareTo(node.key) < 0) {
+            node.left = remove(node.left, key);
+            return node;
+        }else if (key.compareTo(node.key) > 0){
+            node.right = remove(node.right ,key);
+            return node;
+        }else { //key == key -> node
+
+            // 待删除节点左子树为空的情况
+            if (node.left == null) {
+                Node rightNode = node.right;
+                node.right = null; // 此时把node 的下一个指引删除，等于删除了Node， 在C++中此为 delete Node；
+                count--;
+                return rightNode;
+            }
+            // 待删除节点右子树为空的情况
+            if (node.right == null) {
+                Node leftNode = node.left;
+                node.left = null;
+                count--;
+                return leftNode;
+            }
+            // 待删除节点左右子树均不为空的情况
+
+            // 找到比待删除节点大的最小节点, 即待删除节点右子树的最小节点
+            // 用这个节点顶替待删除节点的位置
+            Node successor = new Node(minimum(node.left));
+            count ++;
+
+            successor.right = removeMin(node.right);
+            successor.left = node.left;
+
+            node.left = node.right = null;
+            count --;
+            return successor;
+        }
     }
 
     // 删除掉以node为根的二分搜索树中的最小节点
@@ -266,7 +322,5 @@ public class BST<Key extends Comparable, Value> {
             else
                 assert res == null;
         }
-
     }
-
 }
