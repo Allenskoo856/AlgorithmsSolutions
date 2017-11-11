@@ -197,6 +197,7 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
 		}
 	}
 
+
 	public Key select(int k) {
 		return select(root, k).key;
 	}
@@ -319,6 +320,7 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
 	private boolean isRedBlackBST() {
 		return is23() && isBalanced() && isBST();
 	}
+
 
 	// Exercise 3.3.39
 	private Node moveRedLeft(Node h) {

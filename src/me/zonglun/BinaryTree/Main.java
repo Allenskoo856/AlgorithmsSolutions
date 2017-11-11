@@ -41,7 +41,7 @@ public class Main {
             for (String word: words) {
                 Integer res = bst.search(word);
                 if (res == null)
-                    bst.insert(word, new Integer(1));
+                    bst.insert(word, 1);
                 else
                     bst.insert(word, res + 1);
             }

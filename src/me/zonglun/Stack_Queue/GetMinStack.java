@@ -17,8 +17,8 @@ public class GetMinStack {
 	private Stack<Integer> stackMin;
 
 	public GetMinStack() {
-		this.stackData = new Stack<Integer>();
-		this.stackMin = new Stack<Integer>();
+		this.stackData = new Stack<>();
+		this.stackMin = new Stack<>();
 	}
 
 	public void push(int newNum) {

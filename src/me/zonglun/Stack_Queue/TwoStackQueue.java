@@ -18,8 +18,8 @@ public class TwoStackQueue {
     private Stack<Integer> stackPop;
 
     private TwoStackQueue() {
-        stackPush = new Stack<Integer>();
-        stackPop = new Stack<Integer>();
+        stackPush = new Stack<>();
+        stackPop = new Stack<>();
     }
 
     /**
