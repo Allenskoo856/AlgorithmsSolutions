@@ -79,11 +79,12 @@ public class BlackRedBST<Key extends Comparable<Key>, Value> {
     /*
      *   改变节点的颜色，使得根节点为红色，
     *    它的左右节点为黑色
+    *    ---所有的根节点 左右节均取反
     * */
     private void flipColors(Node node) {
-        node.color = RED;
-        node.left.color = BLACK;
-        node.right.color = BLACK;
+        node.color = !node.color;
+        node.left.color = !node.left.color;
+        node.right.color = !node.right.color;
     }
 
     private int size(Node node) {
@@ -159,6 +160,7 @@ public class BlackRedBST<Key extends Comparable<Key>, Value> {
             return node;
         return max(node.right);
     }
+
     // 返回整个红黑二叉树的最小的值
     public Key min() {
         return min(root).key;
@@ -170,5 +172,104 @@ public class BlackRedBST<Key extends Comparable<Key>, Value> {
         return min(node.left);
     }
 
+    private Node moveRedLeft(Node node) {
+        flipColors(node);
+        if (isRed(node.right.left)) {
+            node.right = rotateRight(node.right);
+            node = rotateLeft(node);
+        }
+        return node;
+    }
 
+    private Node deleteMin(Node node) {
+        if (node.left == null)
+            return null;
+        if (!isRed(node.left) && !isRed(node.left.left))    // 如果左子节点 和孙子节点都为黑
+            node = moveRedLeft(node);
+        node.left = deleteMin(node.left);
+        return balance(node);
+    }
+
+    public void deleteMin() {
+        if (!isRed(root.left) && !isRed(root.right)) {
+            root.color = RED;
+        }
+        root = deleteMin(root);
+        if (root != null) {
+            root.color = BLACK;
+        }
+    }
+
+    private Node balance(Node node) {
+        if (isRed(node.right)) {
+            node = rotateLeft(node);
+        }
+        if (isRed(node.left) && isRed(node.left.left)) {
+            node = rotateRight(node);
+        }
+        if (isRed(node.left) && isRed(node.right)) {
+            flipColors(node);
+        }
+        node.N = size(node.left) + size(node.right) + 1;
+        return node;
+    }
+
+    // Exercise 3.3.40
+    private Node moveRedRight(Node h) {
+        flipColors(h);
+        if (isRed(h.left.left)) {
+            h = rotateRight(h);
+        }
+        return h;
+    }
+
+    public void deleteMax() {
+        if (!isRed(root.left) && !isRed(root.right))
+            root.color = RED;
+        root = deleteMax(root);
+        if (root != null)
+            root.color = BLACK;
+    }
+
+    private Node deleteMax(Node h) {
+        if (isRed(h.left))
+            h = rotateRight(h);
+        if (h.right == null)
+            return null;
+        if (!isRed(h.right) && !isRed(h.right.left))
+            h = moveRedRight(h);
+        h.right = deleteMax(h.right);
+        return balance(h);
+    }
+
+    // Exercise 3.3.41
+    public void delete(Key key) {
+        if (!isRed(root.left) && !isRed(root.right))
+            root.color = RED;
+        root = delete(root, key);
+        if (root != null)
+            root.color = BLACK;
+    }
+
+    private Node delete(Node node, Key key) {
+        if (key.compareTo(node.key) < 0) {
+            if (!isRed(node.left) && !isRed(node.left.left))
+                node = moveRedLeft(node);
+            node.left = delete(node.left, key);
+        } else {
+            if (isRed(node.left))
+                node = rotateRight(node);
+            if (key.compareTo(node.key) == 0 && node.right == null)
+                return null;
+            if (!isRed(node.right) && !isRed(node.right.left))
+                node = moveRedRight(node);
+            if (key.compareTo(node.key) == 0) {
+                node.value = get(node.right, min(node.right).key);
+                node.key = min(node.right).key;
+                node.right = deleteMin(node.right);
+            } else
+                node.right = delete(node.right, key);
+        }
+        return balance(node);
+    }
 }
