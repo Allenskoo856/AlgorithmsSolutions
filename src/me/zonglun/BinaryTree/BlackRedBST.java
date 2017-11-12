@@ -11,6 +11,11 @@ package me.zonglun.BinaryTree;
 /**
  * 〈一句话功能简述〉<br>
  * 〈平衡二叉树---红黑树的实现〉
+ * 红黑树的应用比较广泛，主要是用它来存储有序的数据，它的时间复杂度是O(lgn)，效率非常之高。
+ * 例如，Java集合中的TreeSet和TreeMap，C++ STL中的set、map，以及Linux虚拟内存的管理，都是通过红黑树去实现的
+ * you can see more details in https://www.cnblogs.com/skywang12345/p/3624343.html
+ * 推荐一个较好数据结构算法讲解：http://www.cnblogs.com/skywang12345/p/3603935.html
+ * 推荐书籍 ： 算法（第四版）https://book.douban.com/subject/19952400/
  *
  * @author Administrator
  * @create 2017/11/11 0011
@@ -113,7 +118,7 @@ public class BlackRedBST<Key extends Comparable<Key>, Value> {
         else if (key.compareTo(node.key) > 0)
             node.right = put(node.right, key, value); // 如果值比根节点要大，在左递归树中继续递归
         else
-            node.value = value; // 如果相等就意味着找到了，直接跟新值就可以
+            node.value = value; // 如果相等就意味着找到了，直接更新值就可以
         /*
         * 旋转操作的三个要点：
         *   1. 如果右子节点为红色，而左子节点为黑色，则进行左旋转操作
@@ -126,7 +131,7 @@ public class BlackRedBST<Key extends Comparable<Key>, Value> {
             node = rotateRight(node);
         if (isRed(node.left) && isRed(node.right))
             flipColors(node);
-        node.N = size(node.left) + size(node.right) + 1; // 跟新之后的节点数量
+        node.N = size(node.left) + size(node.right) + 1; // 更之后的节点数量
         return node;
 
     }
