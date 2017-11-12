@@ -104,7 +104,6 @@ public class SST <Key extends Comparable<Key>, Value>{
 
         // 如果待删除的节点就是头结点, 则需要特殊处理
         // 思考: 对于链表, 可以使用什么技术不去特殊处理头结点的特殊情况?
-        // 更多和链表相关的算法问题, 欢迎大家看我的《玩儿转算法面试》课程 :)
         if( key.compareTo(head.key) == 0 ){
             Node delNode = head;
             head = head.next;
