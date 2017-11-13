@@ -67,7 +67,13 @@ public class SparseGraph implements Graph{
 
     @Override
     public void show() {
-
+        for (int i = 0; i < n; i++) {
+            System.out.print("vertex" + i +"\t");
+            for (int j = 0; j < g[i].size(); j++) {
+                System.out.print(g[i].elementAt(j) + "\t");
+            }
+            System.out.println();
+        }
     }
 
     // 返回图中一个顶点的所有邻边

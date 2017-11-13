@@ -67,9 +67,8 @@ public class DenseGraph implements Graph {
     @Override
     public void show() {
         for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                System.out.println(g[i][j] + "\t");
-            }
+            for (int j = 0; j < n; j++)
+                System.out.print(g[i][j] + "\t");
             System.out.println();
         }
     }
