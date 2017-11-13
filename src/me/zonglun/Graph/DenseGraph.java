@@ -8,6 +8,8 @@
 
 package me.zonglun.Graph;
 
+import java.util.Vector;
+
 /**
  * 〈一句话功能简述〉<br>
  * 〈稠密图Java展示〉
@@ -16,7 +18,7 @@ package me.zonglun.Graph;
  * @create 2017/11/12 0012
  * @since 1.0.0
  */
-public class DenseGraph {
+public class DenseGraph implements Graph {
 
     private int n; // 节点数
     private int m;  // 边数
@@ -33,14 +35,17 @@ public class DenseGraph {
         this.g = new boolean[n][n];
     }
 
+    @Override
     public int V() {
         return n;
     } // 返回节点的个数
 
+    @Override
     public int E() {
         return m;
     } // 返回图中边的个数
 
+    @Override
     public void addEdge(int v, int w) {
         assert v >= 0 && v < n;
         assert w >= 0 && w < n;
@@ -52,9 +57,34 @@ public class DenseGraph {
         m++;
     }
 
-    private boolean hasEdge(int v, int w) {
+    @Override
+    public boolean hasEdge(int v, int w) {
         assert v >= 0 && v < n;
         assert w >= 0 && w < n;
         return g[v][w];
+    }
+
+    @Override
+    public void show() {
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                System.out.println(g[i][j] + "\t");
+            }
+            System.out.println();
+        }
+    }
+
+    // 返回图中一个顶点的所有邻边
+    // 由于java使用引用机制，返回一个Vector不会带来额外开销,
+    @Override
+    public Iterable<Integer> adj(int v) {
+        assert v >= 0 && v < n;
+        Vector<Integer> adjv = new Vector<>();
+        for (int i = 0; i < n; i++) {
+            if (g[v][i]) {
+                adjv.add(i);
+            }
+        }
+        return adjv;
     }
 }
