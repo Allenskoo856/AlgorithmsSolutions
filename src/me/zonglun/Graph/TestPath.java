@@ -25,7 +25,10 @@ public class TestPath {
         System.out.println();
 
         Path path = new Path(g, 0);
-        System.out.println("path from 0 to 6: ");
+        System.out.println("DFS for path from 0 to 6: ");
         path.showPath(6);
+        ShortestPath spath = new ShortestPath(g,0);
+        System.out.println("BFS for path from 0 to 6: ");
+        spath.showPath(6);
     }
 }
