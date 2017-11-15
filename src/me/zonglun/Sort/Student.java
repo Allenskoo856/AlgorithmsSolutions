@@ -20,10 +20,10 @@ class Student implements Comparable<Student>{
     private String name;
     private int score;
 
-    Student(String name, int score){
-        this.name = name;
-        this.score = score;
-    }
+        Student(String name, int score){
+            this.name = name;
+            this.score = score;
+        }
 
     // 定义Student的compareTo函数
     // 如果分数相等，则按照名字的字母序排序
