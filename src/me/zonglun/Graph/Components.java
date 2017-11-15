@@ -34,7 +34,7 @@ public class Components {
 
         for (int i = 0; i < G.V(); i++) {
             if (!visited[i]) {
-                dfs(i);
+                dfs(i);     // 图的深度优先遍历-
                 ccount++;
             }
         }
@@ -57,7 +57,7 @@ public class Components {
 
         for (int i : G.adj(v)) {
             if (!visited[i])    // 如果已经被访问过了则继续循环
-                dfs(i);
+                dfs(i);         // 递归运行i
         }
     }
 }
