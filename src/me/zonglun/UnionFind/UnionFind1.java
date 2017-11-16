@@ -20,7 +20,7 @@ public class UnionFind1 {
     private int[] id;
     private int count;
 
-    public UnionFind1(int n) {
+    UnionFind1(int n) {
         count = n;
         id = new int[n];
         for (int i = 0; i < n; i++) {
@@ -35,7 +35,7 @@ public class UnionFind1 {
     }
     // 查看元素p和元素q是否所属一个集合
     // O(1)复杂度
-    public boolean isConnected(int p, int q){
+    boolean isConnected(int p, int q){
         return find(p) == find(q);
     }
 
