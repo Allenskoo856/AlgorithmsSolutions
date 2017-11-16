@@ -7,6 +7,7 @@ import java.util.Stack;
  * @subject
  *     1. 设计一个特殊的栈，在实现栈的基本功能上，再实现返回栈的最小值的功能
  * 	   2. pop, push, getMIn操作时间复杂度为O（1）
+ * 	   3. 时间限制：1秒 空间限制：32768K
  * @Strategies
  * 		设计上使用两个栈，一个用来保存当前栈中的元素--StackData；另一个栈用于保存每一步之中的最小值--记为StackMin
  */
