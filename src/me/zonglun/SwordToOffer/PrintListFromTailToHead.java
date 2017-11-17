@@ -6,9 +6,7 @@
  * Description: 输入一个链表，从尾到头打印链表每个节点的值。    
  */
 
-package me.zonglun.SwordToOffer.SwordToOffer.LinkList;
-
-import java.util.ArrayList;
+package me.zonglun.SwordToOffer;
 
 /**
  * 〈一句话功能简述〉<br>
@@ -29,7 +27,4 @@ public class PrintListFromTailToHead {
         }
     }
 
-    public ArrayList<Integer> printListFromTailToHead(ListNode listNode) {
-
-    }
 }
