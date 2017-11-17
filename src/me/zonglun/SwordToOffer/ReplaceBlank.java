@@ -16,7 +16,7 @@ package me.zonglun.SwordToOffer;
  *@Strategies   1. 使用replaceAll 的API 直接调用正则表达式来求解，但是显然不应该是算法题目要求使用的
  *              2. 从前往后替换，后面的字符要不断往后移动，要多次移动，所以效率低下复杂度为o（n2）
             使用从后往前替换，先计算替换后的空间，使用两个指针， indexOld 为为替换前的索引，indexNew为替换后索引
-                两者都指向队列的后一位
+                两者都指向字符数组的最后一位，从后往前替换
             然后从后往前移动，则每个字符只为移动一次，这样效率为o(n)更高一点
  * @author Administrator
  * @create 2017/11/17 0017
@@ -31,7 +31,7 @@ public class ReplaceBlank {
                 spaceNum++;
 
         int indexOld = str.length() -1;
-        int indexNew = indexOld + spaceNum * 2;
+        int indexNew = indexOld + spaceNum * 2; // 每次替换一次空格至%20就需要多两个空间
         int newLength = indexNew + 1;
         str.setLength(newLength);   // 设置新数组的长度
         // 拷贝数组并替换的过程
@@ -43,7 +43,7 @@ public class ReplaceBlank {
             }else {
                 str.setCharAt(indexNew--,str.charAt(indexOld));
             }
-            --indexOld;
+            --indexOld; // 每轮循环不能忘记维护指针前移动
         }
         return str.toString();
     }

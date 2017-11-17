@@ -6,7 +6,7 @@
  * Description: TwoStackQueue    
  */
 
-package me.zonglun.SwordToOffer.Stack;
+package me.zonglun.SwordToOffer;
 
 import java.util.Stack;
 

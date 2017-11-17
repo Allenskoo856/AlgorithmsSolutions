@@ -6,7 +6,7 @@
  * Description: 剑指offer---在栈中得到最小的元素    
  */
 
-package me.zonglun.SwordToOffer.Stack;
+package me.zonglun.SwordToOffer;
 
 
 import java.util.Stack;

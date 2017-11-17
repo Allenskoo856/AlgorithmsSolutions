@@ -8,23 +8,30 @@
 
 package me.zonglun.SwordToOffer;
 
+import java.util.ArrayList;
+
 /**
  * 〈一句话功能简述〉<br>
  * 〈输入一个链表，从尾到头打印链表每个节点的值。〉
- *
+ *@subject 输入一个链表，从尾到头打印链表每个节点的值
+ * @Strategies
+ *           思路：
  * @author Administrator
- * @subject 输入一个链表，从尾到头打印链表每个节点的值。
  * @create 2017/11/16 0016
  * @since 1.0.0
  */
 public class PrintListFromTailToHead {
+
     private class ListNode {
         int val;
         ListNode next = null;
-
         ListNode(int val) {
             this.val = val;
         }
+    }
+
+    public ArrayList<Integer> printList(ListNode listNode) {
+
     }
 
 }
