@@ -25,7 +25,7 @@ public class MinNumberInRotateArray {
         if (array.length == 0)
             return 0;
         for (int anArray : array) {
-            if (anArray <= 0)
+            if (anArray < 0)
                 return -1;
         }
         int low = 0;
@@ -43,7 +43,11 @@ public class MinNumberInRotateArray {
     }
 
     public static void main(String[] args) {
-        int[] arr = {3,4,5,1,2};
+        int[] arr = {3, 4, 5, 1, 2};
+        int[] arr1 = {1, 0, 1, 1, 1};
+        int[] arr2 = {1, 1, 1, 0, 1};
         System.out.println(MinNumberInRotateArray.minNumberInRotateArray(arr));
+        System.out.println(MinNumberInRotateArray.minNumberInRotateArray(arr1));
+        System.out.println(MinNumberInRotateArray.minNumberInRotateArray(arr2));
     }
 }
