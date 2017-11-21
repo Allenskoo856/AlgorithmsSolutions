@@ -15,13 +15,14 @@ package me.zonglun.SwordToOffer;
                 n<=39,,       0  -----  n=0
         斐波那契数列   f(n) =  1  ----- n = 1
  *                           f(n-1)+f(n-2)  --- n>=2
- * @Strategies 不建议使用递归的方法，时间的复杂度更高
+ * @Strategies 不建议使用递归的方法，时间的复杂度更高，
+ *              可使用循环的方法，先计算循环过程之中的f(3) 在算f（4）这样逐步递归
  * @author Administrator
  * @create 2017/11/19 0019
  * @since 1.0.0
  */
 public class Fibonacci {
-    public static int fibonacci(int n) {
+    private static int fibonacci(int n) {
         if (n <= 1)
             return n;
         int numFn1 = 0, numFn2 = 1, currentNum = 0;
@@ -34,6 +35,6 @@ public class Fibonacci {
     }
 
     public static void main(String[] args) {
-        System.out.println(Fibonacci.fibonacci(30));
+        System.out.println(Fibonacci.fibonacci(3));
     }
 }
