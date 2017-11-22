@@ -11,6 +11,9 @@ package me.zonglun.SwordToOffer;
 /**
  * 〈一句话功能简述〉<br>
  * 〈二进制中一的个数〉
+ *@subject  输入一个整数，输出该数二进制表示中1的个数。
+ *              其中负数用补码表示。
+ * @Strategies
  *
  * @author Administrator
  * @create 2017/11/21 0021
