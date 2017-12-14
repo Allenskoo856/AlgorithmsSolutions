@@ -8,6 +8,8 @@
 
 package me.zonglun.SwordToOffer;
 
+import org.jetbrains.annotations.Contract;
+
 /**
  * 〈一句话功能简述〉<br>
  * 〈矩形覆盖〉
@@ -29,6 +31,7 @@ public class RectCover {
             return Num(target -1) + Num(target - 2);
     }
 
+    @Contract(pure = true)
     private static int NUm1(int target) {
         int tempNum = 1;
         int result = 2;
