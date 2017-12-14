@@ -15,6 +15,9 @@ package me.zonglun.SwordToOffer;
  * @author Administrator
  * @subject 输入一个链表，输出该链表中倒数第k个结点。
  * @Strategies
+ *      两个指针，先让第一个指针和第二个指针都指向头结点，
+ *      然后再让第一个指正走(k-1)步，到达第k个节点。然后两个指针同时往后移动，
+ *      当第一个结点到达末尾的时候，第二个结点所在位置就是倒数第k个节点了
  * @create 2017/12/14 0014
  * @since 1.0.0
  */
@@ -30,12 +33,6 @@ public class FindKthToTail {
             this.next = node;
             return this;
         }
-
-        @Override
-        public String toString() {
-           while (this.next != null)
-               return
-        }
     }
 
     public static ListNode find(ListNode head, int k) {
@@ -43,7 +40,7 @@ public class FindKthToTail {
             return null;
         ListNode pre = head;
         ListNode last = head;
-        for (int i = 0; i < k; i++) {
+        for (int i = 1; i < k; i++) {
             if (pre.next != null)
                 pre = pre.next;
             else
@@ -54,16 +51,5 @@ public class FindKthToTail {
             last = last.next;
         }
         return last;
-    }
-
-    public static void main(String[] args) {
-        ListNode node = new ListNode(3);
-        ListNode node1 = new ListNode(5);
-        ListNode node2 = new ListNode(6);
-        ListNode node3 = new ListNode(12);
-        ListNode node4 = new ListNode(34);
-        node.append(node1).append(node2).append(node3).append(node4);
-        System.out.println(node);
-        //System.out.println(FindKthToTail.find(node,2));
     }
 }
