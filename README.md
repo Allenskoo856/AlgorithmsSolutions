@@ -1,4 +1,4 @@
-# java 算法设计与实现
+# Java 算法设计与实现
 
 > **本仓库使用 Java 实现常见的算法和解决常见的算法面试题目**
 
@@ -79,5 +79,6 @@
 - 算法第四版  ：https://book.douban.com/subject/19952400/
 - 剑指offer  ：https://book.douban.com/subject/6966465/
 - Algorithms, 4th edition textbook code and libraries：https://github.com/kevin-wayne/algs4
-- 《算法（第4版）》习题解答 ：https://github.com/jimmysuncpt/Algorithms
+- 《算法（第4版）》习题解答 ：https://github.com/jimmysuncpt/Algorithms &&  https://github.com/aistrate/AlgorithmsSedgewick
 - 慕课网上的课程《算法与数据结构》： https://github.com/liuyubobobo/Play-with-Algorithms
+- Algorithm Visualizer ：https://github.com/parkjs814/AlgorithmVisualizer
