@@ -83,4 +83,5 @@
 - 慕课网上的课程《算法与数据结构》： https://github.com/liuyubobobo/Play-with-Algorithms
 - Algorithm Visualizer ：https://github.com/parkjs814/AlgorithmVisualizer
 - 一些好的计算机科学门户网站：https://www.geeksforgeeks.org/data-structures/
+- 排序算法的 GitBook 在线书籍 《十大经典排序算法》：https://github.com/hustcc/JS-Sorting-Algorithm
 

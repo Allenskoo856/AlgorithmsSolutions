@@ -21,7 +21,7 @@ package me.zonglun.SwordToOffer;
  */
 public class ReOrderArray {
 
-    public static int[] reOrderArray(int[] array) {
+    private static int[] reOrderArray(int[] array) {
         if (array.length == 0 || array.length == 1) return null;
         //相对位置不变，稳定性
         //插入排序的思想
@@ -41,9 +41,9 @@ public class ReOrderArray {
 
     public static void main(String[] args) {
         int[] arr = {3, 2, 7, 1, 68, 21, 34, 9};
-        int[] aferArr = ReOrderArray.reOrderArray(arr);
-        for (int i = 0; i < aferArr.length; i++) {
-            System.out.print(aferArr[i] + " ");
+        int[] afterArr = ReOrderArray.reOrderArray(arr);
+        for (int i = 0; i < afterArr.length; i++) {
+            System.out.print(afterArr[i] + " ");
         }
     }
 }
