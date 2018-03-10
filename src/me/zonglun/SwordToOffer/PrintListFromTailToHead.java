@@ -24,7 +24,7 @@ import java.util.Stack;
  */
 public class PrintListFromTailToHead {
 
-    private class ListNode {
+    private static class ListNode {
         int val;
         ListNode next = null;
         ListNode(int val) {
@@ -32,7 +32,7 @@ public class PrintListFromTailToHead {
         }
     }
 
-    public ArrayList<Integer> printList(ListNode listNode) {
+    private static ArrayList<Integer> printList(ListNode listNode) {
         Stack<Integer> stack = new Stack<>();
         while (listNode != null) {
             stack.push(listNode.val);
@@ -42,6 +42,7 @@ public class PrintListFromTailToHead {
         ArrayList<Integer> list = new ArrayList<>();
         while (!stack.empty())
             list.add(stack.pop());
+        System.out.println(list);
         return list;
     }
 
@@ -52,6 +53,17 @@ public class PrintListFromTailToHead {
             list.add(listNode.val);
         }
         return list;
+    }
+
+    public static void main(String[] args) {
+        ListNode node1 = new ListNode(3);
+        ListNode node2 = new ListNode(4);
+        ListNode node3 = new ListNode(5);
+        ListNode node4 = new ListNode(6);
+        node1.next = node2;
+        node2.next = node3;
+        node3.next = node4;
+        printList(node1);
     }
 
 }
