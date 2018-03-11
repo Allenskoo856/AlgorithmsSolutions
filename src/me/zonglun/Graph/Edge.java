@@ -8,8 +8,6 @@
 
 package me.zonglun.Graph;
 
-import org.jetbrains.annotations.NotNull;
-
 /**
  * 〈一句话功能简述〉<br>
  * 〈对有权图的类的边进行封装〉
@@ -59,7 +57,7 @@ public class Edge<Weight extends Number & Comparable> implements Comparable<Edge
     }
 
     @Override
-    public int compareTo(@NotNull Edge that) {
+    public int compareTo( Edge that) {
         if (weight.compareTo(that.weight) < 0)
             return -1;
         else if (weight.compareTo(that.weight) > 0)
