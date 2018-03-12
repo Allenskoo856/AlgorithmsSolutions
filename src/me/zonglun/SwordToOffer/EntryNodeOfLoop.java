@@ -26,6 +26,25 @@
          // 最少要三个节点成环
         if (pHead == null || pHead.next == null || pHead.next.next == null)
             return null;
+
+        // 第一步，找环中相汇点。分别用p1，p2指向链表头部，p1每次走一步，p2每次走二步，直到p1==p2找到在环中的相汇点。
+         ListNode p1 = pHead;
+         ListNode p2 = pHead;
+         while (p2 != null && p1 != null) {
+             p1 = p1.next;
+             p2 = p2.next.next;
+        // 第二步，将相遇的这点时叫做B点，此时将p2指针重新移到链表的头部，p1任然在B点，两者以相同的速度扫描，直到相遇即
+             // 到了链表中环的入口
+             if (p1 == p2) {
+                 p2 = pHead;
+                 while (p1 != p2) {
+                     p1 = p1.next;
+                     p2 = p2.next;
+                 }
+                 if (p1 == p2)
+                     return p1;
+             }
+         }
          return null;
      }
  }

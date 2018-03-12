@@ -17,10 +17,10 @@
   * @since 1.0.0
   */
  public class ListNode {
-     int val;
+     public int val;
      public ListNode next = null;
 
-     ListNode(int val) {
+     public ListNode(int val) {
          this.val = val;
      }
  }
