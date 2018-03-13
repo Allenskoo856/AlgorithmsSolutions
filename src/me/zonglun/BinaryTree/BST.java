@@ -3,7 +3,7 @@
  * FileName: BST
  * Author:   Administrator
  * Date:     2017/11/8 0008 11:01
- * Description: 二分搜索树    
+ * Description: 二分搜索树
  */
 
 package me.zonglun.BinaryTree;
@@ -32,7 +32,7 @@ public class BST<Key extends Comparable<Key>, Value> {
             left = right = null;
         }
 
-        public Node(Node node){
+        public Node(Node node) {
             this.key = node.key;
             this.value = node.value;
             this.left = node.left;
@@ -136,10 +136,10 @@ public class BST<Key extends Comparable<Key>, Value> {
         if (key.compareTo(node.key) < 0) {
             node.left = remove(node.left, key);
             return node;
-        }else if (key.compareTo(node.key) > 0){
-            node.right = remove(node.right ,key);
+        } else if (key.compareTo(node.key) > 0) {
+            node.right = remove(node.right, key);
             return node;
-        }else { //key == key -> node
+        } else { //key == key -> node
 
             // 待删除节点左子树为空的情况
             if (node.left == null) {
@@ -160,13 +160,13 @@ public class BST<Key extends Comparable<Key>, Value> {
             // 找到比待删除节点大的最小节点, 即待删除节点右子树的最小节点
             // 用这个节点顶替待删除节点的位置
             Node successor = new Node(minimum(node.left));
-            count ++;
+            count++;
 
             successor.right = removeMin(node.right);
             successor.left = node.left;
 
             node.left = node.right = null;
-            count --;
+            count--;
             return successor;
         }
     }
@@ -248,24 +248,28 @@ public class BST<Key extends Comparable<Key>, Value> {
             count++;
             return new Node(key, value);
         }
-        if (key.compareTo(node.key) == 0)
+        if (key.compareTo(node.key) == 0) {
             node.value = value;
-        else if (key.compareTo(node.key) < 0)
+        } else if (key.compareTo(node.key) < 0) {
             node.left = insert(node.left, key, value);
-        else
+        }
+        else{
             node.right = insert(node.right, key, value);
+        }
         return node;
     }
 
     private boolean contain(Node node, Key key) {
         if (node == null)
             return false;
-        if (node.key == key)
+        if (node.key == key) {
             return true;
-        else if (key.compareTo(node.key) < 0)
+        } else if (key.compareTo(node.key) < 0) {
             return contain(node.left, key);
-        else
+        }
+        else{
             return contain(node.right, key);
+        }
     }
 
     // 在以node为根的二分搜索树中查找key所对应的value, 递归算法
@@ -273,12 +277,14 @@ public class BST<Key extends Comparable<Key>, Value> {
     private Value search(Node node, Key key) {
         if (node == null)
             return null;
-        if (key.compareTo(node.key) == 0)
+        if (key.compareTo(node.key) == 0) {
             return node.value;
-        else if (key.compareTo(node.key) < 0)
+        } else if (key.compareTo(node.key) < 0) {
             return search(node.left, key);
-        else
+        }
+        else{
             return search(node.right, key);
+        }
     }
 
     public static void main(String[] args) {
