@@ -4,7 +4,6 @@ package me.zonglun.SwordToOffer;
 
 import me.zonglun.SwordToOffer.util.ListNode;
 
-import java.util.ArrayList;
 
 /**
  * 〈一句话功能简述〉<br>
@@ -24,13 +23,12 @@ public class DeleteDuplicationListNode {
      * @param pHead
      * @return
      */
-    // todo false pass
     public ListNode deleteDuplication(ListNode pHead) {
         if (pHead == null || pHead.next == null) {
-            return null;
+            return pHead;    // 只有0个或1个结点，则返回
         }
 
-        //  // 当前结点是重复结点
+        //  当前结点是重复结点
         if (pHead.val == pHead.next.val) {
             ListNode pNode = pHead.next;
             while (pNode != null && pNode.val == pHead.val) {
@@ -43,20 +41,39 @@ public class DeleteDuplicationListNode {
             pHead.next = deleteDuplication(pHead.next); // 保留当前结点，从下一个结点开始递归
             return pHead;
         }
-
     }
 
-    public static void main(String[] args) {
-        ListNode node1 = new ListNode(1);
-        ListNode node2 = new ListNode(2);
-        ListNode node3 = new ListNode(2);
-        ListNode node4 = new ListNode(3);
-        ListNode node5 = new ListNode(4);
-        ListNode node6 = new ListNode(4);
-        node1.next = node2;
-        node2.next = node3;
-        node3.next = node4;
-        node4.next = node5;
-        node5.next = node6;
+    /**
+     * 使用非递归来实现功能
+     * @param pHead
+     * @return  ListNode
+     */
+    public ListNode deleteDuplication2(ListNode pHead) {
+        if (pHead == null || pHead.next == null) {
+            return pHead;
+        }
+
+        // 新建一个头节点防止，第一个节点被删除
+        ListNode newNode = new ListNode(-1);
+        newNode.next = pHead;
+        ListNode pre = newNode;
+        ListNode p = pHead;
+        ListNode next = null;
+        while (p != null && p.next != null) {
+            next = p.next;
+            //如果当前节点的值和下一个节点的值相等
+            if (p.val == next.val) {
+                while (next != null && next.val == p.val) {
+                    next = next.next; // 指针继续后移,直到找到所有的重复的值
+                }
+                pre.next = next; // 指针赋值直到最后一个重复的值为止，可视为删除多余的节点
+                p = next;
+            } else {        //如果当前节点和下一个节点值不等，则向后移动一位
+                pre = p;
+                p = p.next;     // 指针继续后移
+            }
+        }
+        return newNode.next;
     }
+
 }
