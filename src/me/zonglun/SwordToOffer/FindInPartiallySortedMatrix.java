@@ -3,7 +3,7 @@
  * FileName: FindInPartiallySortedMatrix
  * Author:   Administrator
  * Date:     2017/11/17 0017 10:33
- * Description: 二维数组的查找    
+ * Description: 二维数组的查找
  */
 
 package me.zonglun.SwordToOffer;
@@ -35,41 +35,32 @@ package me.zonglun.SwordToOffer;
  * @since 1.0.0
  */
 public class FindInPartiallySortedMatrix {
-        public static boolean find(int target, int[][] arr) {
-                // 取右上角的点为基准点
-                int col = 0;    // 列的开始点为0
-                int row = arr[0].length - 1;    // 行的开始点为最大值
-                while (col <= arr.length -1 && row >= 0){
-                        if (target == arr[row][col])
-                                return true;
-                        else if (target < arr[row][col])
-                                row--;
-                        else
-                                col++;
+
+    /**
+     *
+     * @param target 目标值
+     * @param array  目标数组
+     * @return  boolean
+     */
+        public static boolean find(int target, int[][] array) {
+            int row = 0;
+            int col = array[0].length - 1;
+            while (row <= array.length - 1 && col >= 0) {
+                if (target == array[row][col]) {
+                    return true;
+                } else if (target > array[row][col]) {
+                    row++;
+                } else {
+                    col--;
                 }
-                return false;
+            }
+            return false;
         }
 
-        public static boolean find2(int target, int[][] arr){
-                for (int[] anArr : arr) {
-                        int l = 0;
-                        int r = anArr.length - 1;
-                        while (l < r) {
-                                int mid = (l + r) / 2;
-                                if (target > anArr[mid])
-                                        l = mid + 1;
-                                else if (target < anArr[mid])
-                                        r = mid - 1;
-                                else
-                                        return true;
-                        }
-                }
-                return false;
-        }
 
         public static void main(String[] args) {
                 int[][] arr = {{1,2,8,9},{2,4,9,8},{4,7,10,13},{6,8,11,15}};
                 System.out.println(FindInPartiallySortedMatrix.find(5,arr));
-                System.out.println(FindInPartiallySortedMatrix.find2(7,arr));
+                System.out.println(FindInPartiallySortedMatrix.find(7,arr));
         }
 }
