@@ -23,7 +23,7 @@ public class DeleteDuplicationListNode {
      * @param pHead
      * @return
      */
-    public ListNode deleteDuplication(ListNode pHead) {
+    private ListNode deleteDuplication(ListNode pHead) {
         if (pHead == null || pHead.next == null) {
             return pHead;    // 只有0个或1个结点，则返回
         }
