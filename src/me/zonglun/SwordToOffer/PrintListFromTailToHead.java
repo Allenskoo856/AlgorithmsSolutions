@@ -40,9 +40,10 @@ public class PrintListFromTailToHead {
         }
 
         ArrayList<Integer> list = new ArrayList<>();
-        while (!stack.empty())
+        while (!stack.empty()) {
             list.add(stack.pop());
-        System.out.println(list);
+        }
+        // System.out.println(list);
         return list;
     }
 
