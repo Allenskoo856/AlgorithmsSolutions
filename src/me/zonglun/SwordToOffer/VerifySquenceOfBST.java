@@ -51,6 +51,7 @@ public class VerifySquenceOfBST {
                 return false;       // 如果在这个临界值的右边，有小于 root 的值，则不符合二叉搜索树的定义
             }
         }
+        // 子树递归判断
         return Verity(sequence, start, i - 1) && Verity(sequence, i, end - 1);
     }
 
