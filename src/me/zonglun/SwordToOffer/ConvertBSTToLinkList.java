@@ -15,7 +15,6 @@ import me.zonglun.SwordToOffer.util.TreeNode;
  */
 public class ConvertBSTToLinkList {
 
-
     /**
      *
      * @param pRootOfTree
