@@ -16,7 +16,7 @@ public class GetLeastNumbers_Solution {
 
 
     /**
-     *
+     *  采用堆排序的最大堆来做
      * @param input
      * @param k
      * @return
