@@ -49,6 +49,5 @@ public class ConvertBSTToLinkList {
         if (currentNode.right != null) {
             ConvertNode(currentNode.right, pLastNodeInList);
         }
-
     }
 }

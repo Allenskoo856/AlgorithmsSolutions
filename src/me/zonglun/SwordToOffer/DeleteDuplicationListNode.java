@@ -1,9 +1,6 @@
-
-
 package me.zonglun.SwordToOffer;
 
 import me.zonglun.SwordToOffer.util.ListNode;
-
 
 /**
  * 〈一句话功能简述〉<br>
