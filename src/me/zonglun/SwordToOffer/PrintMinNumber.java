@@ -12,6 +12,7 @@ import java.util.ArrayList;
  */
 public class PrintMinNumber {
 
+    // todo doing this jobs
     public String printMinNumber(int[] numbers) {
         int n;
         String s = "";
@@ -19,5 +20,6 @@ public class PrintMinNumber {
         for (int i = 0; i < numbers.length; i++) {
             list.add(numbers[i]);
         }
+        return "";
     }
 }
