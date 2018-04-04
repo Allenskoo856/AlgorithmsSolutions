@@ -1,5 +1,7 @@
 package me.zonglun.SwordToOffer;
 
+import java.util.ArrayList;
+
 /**
  * 丑数
  *
@@ -16,12 +18,13 @@ public class GetUglyNumber_Solution {
         if (index <= 0) {
             return 0;
         }
+
         int result = 0;
-        int uglyTar = 0;
-        while (uglyTar < index) {
-            uglyTar++;
-            if (isUglyNumber(uglyTar)) {
-                result++;
+        int target = 0;
+        while (target < index) {
+            result++;
+            if (isUglyNumber(result)) {
+                target++;
             }
         }
         return result;
@@ -40,7 +43,38 @@ public class GetUglyNumber_Solution {
         return number == 1;
     }
 
+    private static int solutions2(int index) {
+        if (index <= 0) {
+            return 0;
+        }
+        ArrayList<Integer> list = new ArrayList<>();
+        // add 进第一个丑数
+        list.add(1);
+        // 三个下标用来记录丑数的位置
+        int i2 = 0, i3 = 0, i5 = 0;
+        while (list.size() < index) {
+            // 三个数都是可能的丑数，取最小的放进丑数数组里面
+            int n2 = list.get(i2) * 2;
+            int n3 = list.get(i3) * 3;
+            int n5 = list.get(i5) * 5;
+            int min = Math.min(n2, Math.min(n3,n5));
+            list.add(min);
+            if (min == n2)
+                i2++;
+            if (min == n3) {
+                i3++;
+            }
+            if (min == n5) {
+                i5++;
+            }
+        }
+        return list.get(list.size() - 1);
+    }
+
+
+
     public static void main(String[] args) {
         System.out.println(GetUglyNumber_Solution.solutions(14));
+        System.out.println(GetUglyNumber_Solution.solutions2(14));
     }
 }
