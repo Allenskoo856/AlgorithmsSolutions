@@ -14,7 +14,46 @@ package me.zonglun.SwordToOffer;
  */
 public class InversePairs {
 
-    public int solutions(int [] array) {
+    private int result;
 
+    public int solutions(int [] array) {
+        result = 0;
+        if (array != null) {
+            mergeSortUpToDown(array, 0, array.length - 1);
+        }
+        return result;
+    }
+
+    /**
+     * 归并排序，从上往下
+     * @param array
+     * @param start
+     * @param end
+     */
+    private void mergeSortUpToDown(int[] array, int start, int end) {
+        if (start >= end){
+            return;
+        }
+        int mid = (end - start) / 2;
+        mergeSortUpToDown(array, start, mid);
+        mergeSortUpToDown(array, mid + 1, end);
+        merge(array, start, mid, end);
+    }
+
+    /**
+     *
+     * @param array
+     * @param start
+     * @param mid
+     * @param end
+     */
+    private void merge(int[] array, int start, int mid, int end) {
+        int[] temp = new int[end - start + 1];
+        int i = start, j = mid + 1, k = 0;
+        while (i <= mid && j <= end) {
+            if (array[i] < array[j]) {
+                temp[k++] = array[i++];
+            }
+        }
     }
 }
