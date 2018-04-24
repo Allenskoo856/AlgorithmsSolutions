@@ -16,7 +16,7 @@ import java.util.Stack;
  * @subject 用两个栈来实现一个队列，完成队列的Push和Pop操作。 队列中的元素为int类型。
  *
  * @Strategies
- *      1. 设计上使用两个栈，一个只能用来压入栈--StackPush；另一个栈只能弹出栈--记为StackPop;
+ *      1. 设计上使用两个栈，一个只用来压入栈--StackPush；另一个栈只能弹出栈--记为StackPop;
  *      2. 栈的特点是先进后出，队列先进先出，可用来将数据存入压入栈如 1-2-3-4-5  StackPush：5-4-3-2-1 再把Stackpush的值压入StackPop  变为：Stackpop：1-2-3-4-5 这样从Stackpop里弹出的顺序和向Stackpush压入的顺序则完全一致。
  *      3. 注意两点：（1）Stackpush往Stackpop完全压入的时候必须一次性压入，不能出现剩余数据
  *                  （2）如果Stackpop不为空，则不能出现压栈操作
@@ -24,6 +24,7 @@ import java.util.Stack;
  * @create 2017/11/16 0016
  * @since 1.0.0
  */
+
 public class TwoStackQueue {
     private Stack<Integer> stackPush = new Stack<>();
     private Stack<Integer> stackPop = new Stack<>();

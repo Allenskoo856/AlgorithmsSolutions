@@ -8,6 +8,9 @@
 
 package me.zonglun.UnionFind;
 
+import org.jetbrains.annotations.TestOnly;
+import org.junit.Test;
+
 /**
  * 〈一句话功能简述〉<br>
  * 〈UnionFindTestHelper 〉
@@ -19,6 +22,7 @@ package me.zonglun.UnionFind;
 // 测试并查集
 public class UnionFindTestHelper {
 
+    @Test
     // 测试第一版本的并查集, 测试元素个数为n
     public static void testUF1( int n ){
 
@@ -46,7 +50,6 @@ public class UnionFindTestHelper {
 
     // 测试第二版本的并查集, 测试元素个数为n, 测试逻辑和之前是完全一样的
     // 思考一下: 这样的冗余代码如何消除?
-    // 由于这个课程不是设计模式课程, 在这里就不过多引入相关的问题讲解了。留作给大家的思考题:)
     public static void testUF2( int n ){
 
         UnionFind2 uf = new UnionFind2(n);
