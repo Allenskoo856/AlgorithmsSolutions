@@ -16,9 +16,9 @@ public class DuplicateNum {
     /**
      *
      * @param numbers 整数数组，长度为n
-     * @param length
-     * @param duplication
-     * @return
+     * @param length   长度、
+     * @param duplication  重复的数字
+     * @return boolean
      */
     public boolean deplicateNum(int numbers[], int length, int[] duplication) {
         HashSet<Integer> hs = new HashSet<>();
