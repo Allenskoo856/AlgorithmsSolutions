@@ -10,6 +10,9 @@ package me.zonglun.SwordToOffer;
  */
 public class RegMach {
     public boolean match(char[] str, char[] pattern) {
+        if (str == null || pattern == null) {
+            return false;
+        }
         // todo
         return true;
     }
