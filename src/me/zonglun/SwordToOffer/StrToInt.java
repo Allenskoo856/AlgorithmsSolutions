@@ -28,7 +28,7 @@ public class StrToInt {
                 return 0;
             }
             result = result * 10 + arr[i] - '0';
-            if ((symbol == 1 && result > Integer.MAX_VALUE) || (symbol == -1 && result < Integer.MIN_VALUE)) {
+            if (symbol == 1 && result > Integer.MAX_VALUE) {
                 isInvalid = true;
                 return 0;
             }
