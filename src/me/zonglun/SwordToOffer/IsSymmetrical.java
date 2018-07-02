@@ -18,14 +18,14 @@ public class IsSymmetrical {
      *   1. 根节点相同，根节点的左子树的左节点和右子树的右节点相同
      *   2. 左子树的右结点和右子树的左结点相同
      *   3. 递归循环即可
-     * @param node
+     * @param pRoot
      * @return
      */
-    public boolean check(TreeNode node) {
-        if (node == null) {
+    public boolean check(TreeNode pRoot) {
+        if (pRoot == null) {
             return true;
         }
-        return checkChildTree(node.left, node.right);
+        return checkChildTree(pRoot.left, pRoot.right);
     }
 
     /**

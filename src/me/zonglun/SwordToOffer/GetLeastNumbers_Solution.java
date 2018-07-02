@@ -36,7 +36,6 @@ public class GetLeastNumbers_Solution {
                 maxHeap.offer(anInput);
             }
         }
-
         result.addAll(maxHeap);
         return result;
     }
