@@ -59,8 +59,6 @@ public class PrintBinayTreeInOrder {
         return result;
     }
 
-
-
     private TreeNode createBinaryTreeByArray(int[] array, int index) {
         TreeNode tn = null;
         if (index < array.length) {
