@@ -2,13 +2,13 @@ package me.zonglun.SwordToOffer.util;
 
 /**
  * @author : Administrator
- * @create 2018-06-30 21:26
+ * @create 2018-05-20 16:22
  */
 public class TreeLinkNode {
-    public int val;
-    public TreeLinkNode left = null;
-    public TreeLinkNode right = null;
-    public TreeLinkNode next = null;
+    int val;
+    TreeLinkNode left = null;
+    TreeLinkNode right = null;
+    TreeLinkNode next = null;
 
     TreeLinkNode(int val) {
         this.val = val;
