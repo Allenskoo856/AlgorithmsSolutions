@@ -1,7 +1,5 @@
 package me.zonglun.SwordToOffer;
 
-import java.util.LinkedHashMap;
-
 /*
 * @subejct: 在一个字符串(1<=字符串长度<=10000，全部由字母组成)中找到第一个只出现一次的字符,并返回它的位置
 * @example: 例如输入 “abaccdeff" 则输出”b“

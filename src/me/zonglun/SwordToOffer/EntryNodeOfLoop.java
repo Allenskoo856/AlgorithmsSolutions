@@ -26,7 +26,6 @@
          // 最少要三个节点成环
         if (pHead == null || pHead.next == null || pHead.next.next == null)
             return null;
-
         // 第一步，找环中相汇点。分别用p1，p2指向链表头部，p1每次走一步，p2每次走二步，直到p1==p2找到在环中的相汇点。
          ListNode p1 = pHead;
          ListNode p2 = pHead;

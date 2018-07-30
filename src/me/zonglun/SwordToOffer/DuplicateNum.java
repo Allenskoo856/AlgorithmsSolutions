@@ -31,5 +31,4 @@ public class DuplicateNum {
         return false;
     }
 
-
 }
