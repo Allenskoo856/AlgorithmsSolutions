@@ -19,4 +19,5 @@ public class FirstNotRepeatingChar {
         }
         return -1;
     }
+
 }

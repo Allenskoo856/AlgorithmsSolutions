@@ -15,6 +15,7 @@ public class VerifySquenceOfBST {
 
     /**
      * 找住二叉查找树的特点：左子树<根<=右子树  使用分治思想
+     *
      * @param sequence
      * @return boolean
      */

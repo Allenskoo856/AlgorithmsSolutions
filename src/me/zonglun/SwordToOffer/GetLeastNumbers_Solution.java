@@ -14,7 +14,6 @@ import java.util.PriorityQueue;
  */
 public class GetLeastNumbers_Solution {
 
-
     /**
      *  采用堆排序的最大堆来做
      * @param input
@@ -39,6 +38,7 @@ public class GetLeastNumbers_Solution {
         result.addAll(maxHeap);
         return result;
     }
+
 
     public static void main(String[] args) {
         int[] input = {4, 5, 1, 6, 2, 7, 3, 8};

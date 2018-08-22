@@ -29,4 +29,5 @@ public class Sum_SolutionN {
     public static void main(String[] args) {
         System.out.println(new Sum_SolutionN().sum_solutions(5));
     }
+
 }

@@ -9,7 +9,7 @@ package me.zonglun.SwordToOffer;
  * @create 2018-05-12 19:36
  */
 public class FirstAppearingOnce {
-    private int[] hashtable = new int[256];
+    private int[] hashTable = new int[256];
     private StringBuffer s = new StringBuffer();
 
     public void setS(StringBuffer s) {
@@ -19,10 +19,10 @@ public class FirstAppearingOnce {
     // Insert one char from StringStream
     public void Insert(char ch) {
         s.append(ch);
-        if (hashtable[ch] == 0) {
-            hashtable[ch] = 1;
+        if (hashTable[ch] == 0) {
+            hashTable[ch] = 1;
         } else {
-            hashtable[ch] += 1;
+            hashTable[ch] += 1;
         }
     }
 
@@ -30,7 +30,7 @@ public class FirstAppearingOnce {
     public char FristAppearingOnce() {
         char[] str = s.toString().toCharArray();
         for (char c : str) {
-            if (hashtable[c] == 1) {
+            if (hashTable[c] == 1) {
                 return c;
             }
         }
