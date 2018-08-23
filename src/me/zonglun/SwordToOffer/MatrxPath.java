@@ -16,6 +16,7 @@ package me.zonglun.SwordToOffer;
 public class MatrxPath {
 
     public boolean hasPath(char[] matrix, int rows, int cols, char[] str) {
-
+        // todo
+        return false;
     }
 }
