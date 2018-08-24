@@ -1,7 +1,6 @@
 package me.zonglun.SwordToOffer;
 
-import java.util.Comparator;
-import java.util.PriorityQueue;
+import java.util.LinkedList;
 
 /**
  * 数据流中的中位数
@@ -14,42 +13,46 @@ import java.util.PriorityQueue;
  *      我们使用Insert()方法读取数据流，使用GetMedian()方法获取当前读取数据的中位数。
  */
 public class MiddleNumberInDataFlow {
-    int count;
-    PriorityQueue<Integer> minHeap = new PriorityQueue<>();
-    PriorityQueue<Integer> maxHeap = new PriorityQueue<>(11, new Comparator<Integer>() {
-        @Override
-        public int compare(Integer o1, Integer o2) {
-            // PriorityQueue 默认是小顶堆，实现大顶堆要反转
-            return o2.compareTo(o1);
-        }
-    });
 
-    public void Insert(Integer num) {
-        count++;
-        if (count % 2 == 0) {
-            if (!maxHeap.isEmpty() && num < maxHeap.peek()) {
-                maxHeap.offer(num);
-            }
-            minHeap.offer(num);
+    private LinkedList<Integer> list = new LinkedList<>();
+
+    /**
+     * 将数据插入到linkList
+     * @param num
+     */
+    public void insert(Integer num) {
+        if (list.isEmpty() || num < list.getFirst()) {
+            list.addFirst(num);
         } else {
-            if (!minHeap.isEmpty() && num > minHeap.peek()) {
-                minHeap.offer(num);
-                num = minHeap.poll();
+            boolean isInsertSuccess = false;
+            for (Integer i : list) {
+                if (num < i) {
+                    int index = list.indexOf(i);
+                    list.add(index, num);
+                    isInsertSuccess = true;
+                    break;
+                }
             }
-            maxHeap.offer(num);
+            if (!isInsertSuccess) {
+                list.addLast(num);
+            }
         }
     }
 
     public Double GetMedian() {
-        if (count == 0) {
-            throw new RuntimeException("no available numbers!");
+        if(list.isEmpty()) {
+            return null;
         }
-        double result = 0.0;
-        if (count % 2 == 1) {
-            result = maxHeap.peek();
-        } else {
-            result = (minHeap.peek() + maxHeap.peek()) / 2.0;
+
+        int mid = list.size() / 2;
+
+        // 如果长度是偶数
+        if((list.size() & 1) == 0) {
+            Integer first = list.get(mid - 1);
+            Integer second = list.get(mid);
+            return Double.valueOf(first + second) / 2.0;
         }
-        return result;
+
+        return Double.valueOf(list.get(mid));
     }
 }

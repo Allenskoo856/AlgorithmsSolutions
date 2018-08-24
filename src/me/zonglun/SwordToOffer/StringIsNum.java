@@ -8,9 +8,53 @@ package me.zonglun.SwordToOffer;
  * @create 2018-05-11 20:21
  */
 public class StringIsNum {
+
+    /**
+     * 表述数值的字符串情况较多，分析如下：
+     *
+     *  首先，第一个字符可能是正’+’，负’-‘号，也可能是数字。
+     *  如果遇到了’.’，说明是一个小数，那么’.’后面应该是一串0到9的数字
+     *  如果遇到了’E’，说明是一个科学记数，那么’E’后面应该是一串0到9的数字，注意E后面可以接一个负号，如：-1E-16
+     */
+    private int index = 0;
+
     public boolean isNumeric(char[] str) {
-        // todo
-        return true;
+        if (str.length < 1) {
+            return false;
+        }
+        boolean flags = scanInteger(str);
+        if (index < str.length && str[index] == '.') {
+            index++;
+            flags = scanUnInteger(str) || flags;
+        }
+
+        if (index < str.length && (str[index] == 'E' || str[index] == 'e')) {
+            index++;
+            flags = flags && scanInteger(str);
+        }
+        return flags && index == str.length;
+    }
+
+    private boolean scanInteger(char[] str) {
+        if (index < str.length && (str[index] == '+' || str[index] == '-')) {
+            index++;
+        }
+        return scanUnInteger(str);
+    }
+
+    /**
+     * 判断是否存在整数
+     *
+     * @param str
+     * @return
+     */
+    private boolean scanUnInteger(char[] str) {
+        int start = index;
+        while (index < str.length && str[index] >= '0' && str[index] <= '9') {
+            index++;
+        }
+        // 是否存在整数
+        return start < index;
     }
 
 }
