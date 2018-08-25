@@ -1,5 +1,9 @@
 package me.zonglun.SwordToOffer;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+
 /**
  * 把数组拍成最小的数
  *
@@ -10,8 +14,36 @@ package me.zonglun.SwordToOffer;
  */
 public class PrintMinNumber {
 
-    // todo doing this jobs
+    /**
+     * 先对数组进行排序，对任意数字a，b，排序的规则如下：
+     * a、b能拼接成数字ab或ba，
+     * 如果ab <= ba， 则a排在b前面；
+     * 如果ba < ab， 则b排在a前面；
+     * Step2. 把排序后的数字依次打印出来，拼接数字
+     * 排序借用Java中的Collections.sort()完成，需要自定义Comparator。排序的平均时间复杂度为O(nlogn)
+     * 最后还需要从头遍历一遍数组，需要O(n)的时间
+     * 因此总的时间复杂度为O(nlogn)
+     * @param numbers
+     * @return
+     */
     public String printMinNumber(int[] numbers) {
-        return "s";
+        int n;
+        String s = "";
+        ArrayList<Integer> list = new ArrayList<>();
+        for (int i = 0; i < numbers.length; i++) {
+            list.add(numbers[i]);
+        }
+        Collections.sort(list, new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                String s1 = o1 + "" + o2;
+                String s2 = o2 + "" + o1;
+                return s1.compareTo(s2);
+            }
+        });
+        for (int j : list) {
+            s += j;
+        }
+        return s;
     }
 }
