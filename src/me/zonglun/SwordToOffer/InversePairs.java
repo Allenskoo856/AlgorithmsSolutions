@@ -15,7 +15,7 @@ package me.zonglun.SwordToOffer;
 public class InversePairs {
 
     int count = 0;
-    // todo
+
     public int InversePairs(int [] array) {
         if (array == null || array.length == 0) {
             return 0;
@@ -24,12 +24,40 @@ public class InversePairs {
         return count;
     }
 
-    private void mergeSort(int[] array, int i, int i1) {
-        if (i < i1) {
-            int mid = (i + i1) >> 1;
-            mergeSort(array, i, mid);
-            mergeSort(array, mid, i1);
-            return;
+    private void mergeSort(int[] array, int start, int end) {
+        if (start < end) {
+            int mid = (start + end) >> 1;
+            mergeSort(array, start, mid);
+            mergeSort(array, mid + 1, end);
+            merge(array, start,mid,end);
+        }
+    }
+
+    /**
+     * 将一个数组中的两个相邻有序区间合并成一个
+     * @param array
+     */
+    private void merge(int[] array, int start, int mid ,int end) {
+        int[] temp = new int[end - start + 1];
+        int i = start, j = mid + 1, k = 0;
+        while (i <= mid && j <= end) {
+            if (array[i] <= array[j]) {
+                temp[k++] = array[i++];
+            } else {
+                temp[k++] = array[j++];
+                count += mid - i + 1;
+                count %= 1000000007;
+            }
+        }
+
+        while (i <= mid) {
+            temp[k++] = array[i++];
+        }
+        while (j <= end) {
+            temp[k++] = array[j++];
+        }
+        for (int l = 0; l < temp.length; l++) {
+            array[start + l] = temp[l];
         }
     }
 }

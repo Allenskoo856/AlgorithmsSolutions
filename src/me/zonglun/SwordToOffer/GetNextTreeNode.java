@@ -20,7 +20,25 @@ public class GetNextTreeNode {
      * @return
      */
     public TreeLinkNode GetNext(TreeLinkNode pNode) {
-        // todo
+        if (pNode == null) {
+            return null;
+        }
+        // 节点有右子树 下一个节点为右子树最左子节点
+        if (pNode.right != null) {
+            pNode = pNode.right;
+            while (pNode.left != null) {
+                pNode = pNode.left;
+            }
+            return pNode;
+        }
+        // 节点不是根节点。如果该节点是其父节点的左孩子，则返回父节点；
+        // 否则继续向上遍历其父节点的父节点，重复之前的判断，返回结果。
+        while (pNode.next != null) {
+            if (pNode == pNode.next.left) {
+                return pNode.next;
+            }
+            pNode = pNode.next;
+        }
         return null;
     }
 }

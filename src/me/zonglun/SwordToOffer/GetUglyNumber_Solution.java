@@ -13,37 +13,12 @@ import java.util.ArrayList;
  */
 public class GetUglyNumber_Solution {
 
-    // todo false answer
-    public static int solutions(int index) {
-        if (index <= 0) {
-            return 0;
-        }
-
-        int result = 0;
-        int target = 0;
-        while (target < index) {
-            result++;
-            if (isUglyNumber(result)) {
-                target++;
-            }
-        }
-        return result;
-    }
-
-    private static boolean isUglyNumber(int number) {
-        while (number % 2 == 0) {
-            number /= 2;
-        }
-        while (number % 3 == 0) {
-            number /= 3;
-        }
-        while (number % 5 == 0) {
-            number /= 5;
-        }
-        return number == 1;
-    }
-
-    private static int solutions2(int index) {
+    /**
+     * 丑数解决--办法
+     * @param index 数组
+     * @return 数字
+     */
+    public int GetUglyNumber_Solution(int index) {
         if (index <= 0) {
             return 0;
         }
@@ -69,12 +44,5 @@ public class GetUglyNumber_Solution {
             }
         }
         return list.get(list.size() - 1);
-    }
-
-
-
-    public static void main(String[] args) {
-        System.out.println(GetUglyNumber_Solution.solutions(14));
-        System.out.println(GetUglyNumber_Solution.solutions2(14));
     }
 }

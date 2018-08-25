@@ -1,7 +1,5 @@
 package me.zonglun.SwordToOffer;
 
-import java.util.ArrayList;
-
 /**
  * 把数组拍成最小的数
  *
@@ -14,12 +12,6 @@ public class PrintMinNumber {
 
     // todo doing this jobs
     public String printMinNumber(int[] numbers) {
-        int n;
-        String s = "";
-        ArrayList<Integer> list = new ArrayList<>();
-        for (int i = 0; i < numbers.length; i++) {
-            list.add(numbers[i]);
-        }
-        return "";
+        return "s";
     }
 }
