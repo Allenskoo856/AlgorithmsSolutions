@@ -2,7 +2,7 @@ package me.zonglun.leetcode.linkedList.question206;
 
 /**
  * 设计链表
- *
+ * 自定义单链表数据结构
  * @author : Administrator
  * @create 2018-08-26 14:36
  */

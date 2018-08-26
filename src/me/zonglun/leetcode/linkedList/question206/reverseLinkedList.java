@@ -1,5 +1,7 @@
 package me.zonglun.leetcode.linkedList.question206;
 
+import me.zonglun.SwordToOffer.util.ListNode;
+
 /**
  * 反转链表
  *
@@ -14,4 +16,34 @@ package me.zonglun.leetcode.linkedList.question206;
  */
 public class reverseLinkedList {
 
+    /**
+     * 迭代的方法
+     * @param head
+     * @return
+     */
+    public ListNode reverseList(ListNode head) {
+        ListNode pre = null;
+        while (head != null) {
+            ListNode temp = head.next;
+            head.next = pre;
+            pre = head; // 备份指正
+            head = temp;
+        }
+        return pre;
+    }
+
+    /**
+     * 递归的解决方法
+     * @param head
+     * @return
+     */
+    public ListNode reverseList2(ListNode head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+        ListNode node = reverseList(head.next);
+        head.next.next = head;
+        head.next = null;
+        return node;
+    }
 }
