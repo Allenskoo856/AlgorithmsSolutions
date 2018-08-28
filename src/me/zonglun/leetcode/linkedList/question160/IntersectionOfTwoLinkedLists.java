@@ -33,6 +33,28 @@ import me.zonglun.SwordToOffer.util.ListNode;
 public class IntersectionOfTwoLinkedLists {
 
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        int lenthA = length(headA), lengthB = length(headB);
+        while (lenthA < lengthB) {
+            headB = headB.next;
+            lengthB--;
+        }
+        while (lenthA > lengthB) {
+            headA = headA.next;
+            lenthA--;
+        }
+        while (headA != headB) {
+            headA = headA.next;
+            headB = headB.next;
+        }
+        return headB;
+    }
 
+    private int length(ListNode head) {
+        int length = 0;
+        while (head != null) {
+            head = head.next;
+            length++;
+        }
+        return length;
     }
 }

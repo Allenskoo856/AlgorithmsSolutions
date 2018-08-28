@@ -17,6 +17,20 @@ import me.zonglun.SwordToOffer.util.ListNode;
  */
 public class linkedlistcycleii {
     public ListNode detectCycle(ListNode head) {
-
+        ListNode slow = head;
+        ListNode fast = head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (fast == slow) {
+                ListNode fast2 = head;
+                while (fast2 != slow) {
+                    fast2 = fast2.next;
+                    slow = slow.next;
+                }
+                return fast2;
+            }
+        }
+        return null;
     }
 }
