@@ -1,4 +1,4 @@
-package me.zonglun.leetcode.linkedList.question206;
+package me.zonglun.leetcode.linkedList;
 
 /**
  * 设计链表
