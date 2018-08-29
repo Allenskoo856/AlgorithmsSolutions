@@ -2,6 +2,9 @@ package me.zonglun.leetcode.linkedList.question160;
 
 import me.zonglun.SwordToOffer.util.ListNode;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * 求两个链表的相交的节点
  *
@@ -56,5 +59,20 @@ public class IntersectionOfTwoLinkedLists {
             length++;
         }
         return length;
+    }
+
+    public ListNode getIntersectionNode2(ListNode headA, ListNode headB) {
+        Set<ListNode> nodeSet = new HashSet<>();
+        while (headA != null) {
+            nodeSet.add(headA);
+            headA = headA.next;
+        }
+        while (headB != null) {
+            if (nodeSet.contains(headB)) {
+                return headB;
+            }
+            headB = headB.next;
+        }
+        return null;
     }
 }
