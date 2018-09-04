@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C), 2015-2017
  * FileName: WeightedGraph
  * Author:   Administrator

@@ -36,7 +36,6 @@ public class SparseWeightedGraph<Weight extends Number & Comparable> implements 
         }
     }
 
-
     @Override
     public int V() {
         return n;
