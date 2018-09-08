@@ -8,9 +8,6 @@
 
 package me.zonglun.UnionFind;
 
-import org.jetbrains.annotations.TestOnly;
-import org.junit.Test;
-
 /**
  * 〈一句话功能简述〉<br>
  * 〈UnionFindTestHelper 〉
@@ -22,7 +19,7 @@ import org.junit.Test;
 // 测试并查集
 public class UnionFindTestHelper {
 
-    @Test
+
     // 测试第一版本的并查集, 测试元素个数为n
     public static void testUF1( int n ){
 

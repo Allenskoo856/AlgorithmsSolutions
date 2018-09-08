@@ -8,7 +8,8 @@
 
 package me.zonglun.BinaryTree;
 
-import edu.princeton.cs.algs4.Queue;
+
+import sun.misc.Queue;
 
 /**
  * 〈一句话功能简述〉<br>
@@ -80,7 +81,7 @@ public class SequentialSearchST<Key, Value> {
         for (Node x = first; x != null; x = x.next) {
             queue.enqueue(x.key);
         }
-        return queue;
+        return (Iterable<Key>) queue;
     }
 }
 

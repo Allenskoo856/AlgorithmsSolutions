@@ -21,8 +21,6 @@ public class RadixSort {
     private RadixSort() {
     }
 
-
-
     public static void main(String[] args) {
         int[] A = new int[]{73, 22, 93, 43, 55, 14, 28, 65, 39, 81};
         RadixSort.sort(A, 100);

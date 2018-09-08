@@ -8,8 +8,8 @@
 
 package me.zonglun.Graph;
 
-import edu.princeton.cs.algs4.Stack;
 
+import java.util.Stack;
 import java.util.Vector;
 
 /**
