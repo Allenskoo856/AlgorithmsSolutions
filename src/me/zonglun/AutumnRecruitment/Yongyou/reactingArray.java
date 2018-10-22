@@ -1,4 +1,4 @@
-package me.zonglun.AutumnRecruitment.FireHome.Yongyou;
+package me.zonglun.AutumnRecruitment.Yongyou;
 
 import java.util.HashMap;
 import java.util.Map;

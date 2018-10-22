@@ -1,5 +1,7 @@
-package me.zonglun.AutumnRecruitment.FireHome.Yongyou;
+package me.zonglun.AutumnRecruitment.Yongyou;
 
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.Scanner;
 
 /**
@@ -41,10 +43,8 @@ public class dicCoding {
         Scanner sc = new Scanner(System.in);
         String strs = sc.nextLine();
         String[] dirs = strs.split("\\s");
-       /* int[] arrays = new int[dirs.length];
-        for (int i = 0; i < dirs.length; i++) {
-            arrays[i] = Integer.valueOf(dirs[i]);
-        }*/
+
+        Arrays.sort(dirs);
         for (int i = 0; i < dirs.length; i++) {
             if (dirs[i].length() == 2 )
                 System.out.println(dirs[i]);
