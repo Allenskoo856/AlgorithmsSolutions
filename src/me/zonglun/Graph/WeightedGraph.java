@@ -9,7 +9,7 @@
 package me.zonglun.Graph;
 
 /**
- * 〈一句话功能简述〉<br> 
+ * 〈一句话功能简述〉<br>
  * 〈WeightedGraph抽象接口〉
  *
  * @author Administrator
@@ -17,10 +17,15 @@ package me.zonglun.Graph;
  * @since 1.0.0
  */
 public interface WeightedGraph<Weight extends Number & Comparable> {
-    public int V();
-    public int E();
-    public void addEdge(Edge<Weight> e);
-    boolean hasEdge( int v , int w );
+    int V();
+
+    int E();
+
+    void addEdge(Edge<Weight> e);
+
+    boolean hasEdge(int v, int w);
+
     void show();
-    public Iterable<Edge<Weight>> adj(int v);
+
+    Iterable<Edge<Weight>> adj(int v);
 }

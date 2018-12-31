@@ -17,6 +17,7 @@ package me.zonglun.BinaryTree;
  * @since 1.0.0
  */
 public class TestBinarySearch {
+
     private TestBinarySearch() {
     }
 

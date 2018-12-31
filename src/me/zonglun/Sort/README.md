@@ -24,7 +24,7 @@
 
 **（4）排序算法图片总结(图片来源于网络):**
 
-排序对比：![mark](https://ojd94jpsx.qnssl.com/blog/20170910/205952484.png)
+排序对比：![mark](http://cdn.zonglun.me/blog/20170910/205952484.png)
 
 ###  图片名词解释
 
@@ -40,7 +40,7 @@
 
 ### 排序的分类
 
-![mark](https://ojd94jpsx.qnssl.com/blog/20170910/210229853.jpg)
+![mark](http://cdn.zonglun.me/blog/20170910/210229853.jpg)
 
 ### 1.冒泡排序（Bubble Sort）
 
@@ -59,7 +59,7 @@
 - <3>.针对所有的元素重复以上的步骤，除了最后一个；
 - <4>.重复步骤1~3，直到排序完成。
 
-![mark](https://ojd94jpsx.qnssl.com/blog/20170910/211414701.jpg)
+![mark](http://cdn.zonglun.me/blog/20170910/211414701.jpg)
 
 #### [Java 代码实现](https://github.com/Allenskoo856/AlgorithmsSolutions/blob/master/src/me/zonglun/Sort/BubbleSort.java)
 
@@ -116,7 +116,7 @@ console.log(bubbleSort3(arr));//[2, 3, 4, 5, 15, 19, 26, 27, 36, 38, 44, 46, 47,
 
 **冒泡排序的动画表示：**
 
-![mark](https://ojd94jpsx.qnssl.com/blog/20170910/212753864.gif)
+![mark](http://cdn.zonglun.me/blog/20170910/212753864.gif)
 
 #### 时间复杂度分析
 
@@ -150,13 +150,13 @@ console.log(bubbleSort3(arr));//[2, 3, 4, 5, 15, 19, 26, 27, 36, 38, 44, 46, 47,
   。。。
   第n-1次遍历，找到最小的数值与第n-1个元素交换，排序完成。
 
-- 过程：![mark](https://ojd94jpsx.qnssl.com/blog/20170910/213413190.png)
+- 过程：![mark](http://cdn.zonglun.me/blog/20170910/213413190.png)
 
 - [**java代码实现：**](https://github.com/Allenskoo856/AlgorithmsSolutions/blob/master/src/me/zonglun/Sort/SelectionSort.java)
 
   动态过程分析：
 
-  ![mark](https://ojd94jpsx.qnssl.com/blog/20170910/213620046.gif)
+  ![mark](http://cdn.zonglun.me/blog/20170910/213620046.gif)
 
 **js 代码展示**
 
@@ -216,7 +216,7 @@ console.log(selectionSort(arr));//[2, 3, 4, 5, 15, 19, 26, 27, 36, 38, 44, 46, 4
 
 #### (3) 算法图解
 
-![mark](https://ojd94jpsx.qnssl.com/blog/20170910/214045510.png)
+![mark](http://cdn.zonglun.me/blog/20170910/214045510.png)
 
 #### (4) 代码实现
 
@@ -247,7 +247,7 @@ function insertionSort(array) {
 
 
 
-![mark](https://ojd94jpsx.qnssl.com/blog/20170910/214559384.gif)
+![mark](http://cdn.zonglun.me/blog/20170910/214559384.gif)
 
 #### （5）算法分析
 
@@ -309,7 +309,7 @@ console.log(shellSort(arr));//[2, 3, 4, 5, 15, 19, 26, 27, 36, 38, 44, 46, 47, 4
 
 ![这里写图片描述](http://img.blog.csdn.net/20160916235203417)
 
-![mark](https://ojd94jpsx.qnssl.com/blog/20170913/101659655.gif)
+![mark](http://cdn.zonglun.me/blog/20170913/101659655.gif)
 
 **以23, 10, 4, 1的步长序列进行希尔排序。**
 
@@ -343,7 +343,7 @@ console.log(shellSort(arr));//[2, 3, 4, 5, 15, 19, 26, 27, 36, 38, 44, 46, 47, 4
 
 #### （3）算法的图像描述
 
-![mark](https://ojd94jpsx.qnssl.com/blog/20170911/095340028.gif)
+![mark](http://cdn.zonglun.me/blog/20170911/095340028.gif)
 
 #### (4) 代码实现 
 
@@ -563,11 +563,11 @@ console.log(heapSort(arr));//[10, 13, 20, 22, 30, 31, 35, 46, 60, 65, 65, 77, 81
 
 **堆排序动画演示：**
 
-![mark](https://ojd94jpsx.qnssl.com/blog/20170911/145742511.png)
+![mark](http://cdn.zonglun.me/blog/20170911/145742511.png)
 
-![mark](https://ojd94jpsx.qnssl.com/blog/20170911/145912341.png)
+![mark](http://cdn.zonglun.me/blog/20170911/145912341.png)
 
-![mark](https://ojd94jpsx.qnssl.com/blog/20170911/150048612.gif)
+![mark](http://cdn.zonglun.me/blog/20170911/150048612.gif)
 
 #### （3）代码实现
 
@@ -734,11 +734,11 @@ console.log(radixSort(arr,2)); //[2, 3, 4, 5, 15, 19, 26, 27, 36, 38, 44, 46, 47
 
 
 
-![mark](https://ojd94jpsx.qnssl.com/blog/20170911/151138009.png)
+![mark](http://cdn.zonglun.me/blog/20170911/151138009.png)
 
 **算法复杂度的基本分析：**
 
-![mark](https://ojd94jpsx.qnssl.com/blog/20170911/151252189.jpg)
+![mark](http://cdn.zonglun.me/blog/20170911/151252189.jpg)
 
 
 
